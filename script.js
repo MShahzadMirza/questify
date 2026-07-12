@@ -30,6 +30,7 @@ const streakText = document.getElementById('streak');
 
 const xpBar = document.querySelector('.xp');
 const happinessBar = document.querySelector('.happiness');
+const todayTasks = document.getElementById('todayTasks');
 
 const friendBar = document.querySelector('.friendBar');
 
@@ -186,6 +187,8 @@ let subjects = JSON.parse(localStorage.getItem('questifySubjects')) || [
         name: 'Mathematics',
         emoji: '📐',
         progress: 20,
+        tasks:[]
+
     },
 ];
 
@@ -202,7 +205,7 @@ function showSubjects() {
         subjectBox.innerHTML += `
 
 
-        <div class="subject">
+        <div class="subject" onclick="openSubject(${index})">
 
 
             <h3>
@@ -302,4 +305,143 @@ function increaseQiFriendship() {
         speech.textContent =
             '🎉 Qi friendship level up! We are closer now! 🦊💖';
     }
+}
+let currentSubject = null;
+
+const subjectRoom = document.getElementById('subjectRoom');
+
+const roomTitle = document.getElementById('roomTitle');
+
+const roomTasks = document.getElementById('roomTasks');
+function openSubject(index) {
+    currentSubject = index;
+
+    let subject = subjects[index];
+
+    subjectRoom.style.display = 'block';
+
+    roomTitle.innerHTML = subject.emoji + ' ' + subject.name;
+
+    showTasks();
+    showTodayTasks();
+
+    window.scrollTo({
+        top: subjectRoom.offsetTop,
+
+        behavior: 'smooth',
+    });
+}
+document.getElementById('backGarden').addEventListener('click', function () {
+    subjectRoom.style.display = 'none';
+});
+function showTasks() {
+    roomTasks.innerHTML = '';
+
+    let tasks = subjects[currentSubject].tasks || [];
+
+    if (tasks.length === 0) {
+        roomTasks.innerHTML = '🌱 No quests yet';
+    }
+
+    tasks.forEach(function (task) {
+        roomTasks.innerHTML += `
+
+        <div class="quest">
+
+        ${task.completed ? '✅' : '☐'}
+
+        ${task.text}
+
+        </div>
+
+        `;
+    });
+}
+// ➕ Add Task System
+
+const addTaskButton = document.getElementById('addTask');
+
+addTaskButton.addEventListener('click', function () {
+    if (currentSubject === null) {
+        return;
+    }
+
+    let taskName = prompt('What quest do you want to add? 🎯');
+
+    if (taskName) {
+        if (!subjects[currentSubject].tasks) {
+            subjects[currentSubject].tasks = [];
+        }
+
+        subjects[currentSubject].tasks.push({
+            text: taskName,
+
+            completed: false,
+        });
+
+        saveSubjects();
+
+        showTasks();
+
+        speech.textContent = "New quest added! Let's do it! 🦊✨";
+    }
+});
+function showTodayTasks() {
+    todayTasks.innerHTML = '';
+
+    subjects.forEach(function (subject, subjectIndex) {
+        if (subject.tasks) {
+            subject.tasks.forEach(function (task, taskIndex) {
+                todayTasks.innerHTML += `
+
+
+                <div class="quest"
+                onclick="completeTask(${subjectIndex}, ${taskIndex})">
+
+
+                ${task.completed ? '✅' : '☐'}
+
+                ${subject.emoji}
+
+                ${task.text}
+
+
+                </div>
+
+
+                `;
+            });
+        }
+    });
+}
+
+function completeTask(subjectIndex, taskIndex) {
+    alert('Task clicked!');
+    let task = subjects[subjectIndex].tasks[taskIndex];
+
+    if (task.completed === false) {
+        task.completed = true;
+
+        gainXP(20);
+
+        subjects[subjectIndex].progress += 5;
+
+        if (subjects[subjectIndex].progress > 100) {
+            subjects[subjectIndex].progress = 100;
+        }
+
+        speech.textContent = 'Yay! Quest complete! Great job! 🦊✨';
+    } else {
+        task.completed = false;
+
+        speech.textContent = 'We can try again! 🌸';
+    }
+
+    saveSubjects();
+
+    showTasks();
+
+    showTodayTasks();
+
+    updateScreen();
 }
