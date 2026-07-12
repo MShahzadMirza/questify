@@ -1,0 +1,270 @@
+/* 🌸 QUESTIFY - Cozy Summer Theme 🌸 */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+
+    background: linear-gradient(180deg, #fff7e8, #ffeef5);
+
+    color: #5b4636;
+
+    min-height: 100vh;
+}
+
+/* Main App */
+
+.app {
+    width: 90%;
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 25px;
+}
+
+/* Header */
+
+header {
+    text-align: center;
+
+    padding: 25px;
+}
+
+header h1 {
+    font-size: 45px;
+
+    color: #ff8fab;
+
+    text-shadow: 2px 2px #ffd6e0;
+}
+
+header p {
+    font-size: 18px;
+
+    color: #8a6d5d;
+}
+
+/* Cards */
+
+.card {
+    background: rgba(255, 255, 255, 0.8);
+
+    border-radius: 25px;
+
+    padding: 25px;
+
+    margin: 20px 0;
+
+    box-shadow: 0 10px 25px rgba(180, 120, 100, 0.15);
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Stats */
+
+.stats {
+    display: flex;
+
+    justify-content: space-around;
+
+    text-align: center;
+
+    font-size: 18px;
+}
+
+.stats span {
+    display: block;
+
+    font-size: 25px;
+
+    color: #ff8fab;
+
+    font-weight: bold;
+}
+
+/* Qi Section */
+
+.qi {
+    text-align: center;
+}
+
+.fox {
+    font-size: 90px;
+
+    animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.speech {
+    background: #fff0f5;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    margin: 15px;
+
+    font-size: 18px;
+}
+
+/* Progress Bars */
+
+.bar {
+    width: 100%;
+
+    height: 20px;
+
+    background: #eee;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-top: 10px;
+}
+
+.xp {
+    height: 100%;
+
+    width: 0%;
+
+    background: linear-gradient(90deg, #ffd166, #ff9f1c);
+
+    border-radius: 20px;
+}
+
+.happiness {
+    height: 100%;
+
+    width: 80%;
+
+    background: linear-gradient(90deg, #ffb6c1, #ff8fab);
+}
+
+/* Subjects */
+
+.subject {
+    background: #fef6e4;
+
+    padding: 15px;
+
+    border-radius: 20px;
+
+    margin: 15px 0;
+}
+
+.progress {
+    width: 70%;
+
+    height: 100%;
+
+    background: #a7d7c5;
+}
+
+button {
+    border: none;
+
+    background: #ffb6c1;
+
+    color: white;
+
+    padding: 15px 25px;
+
+    border-radius: 30px;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff8fab;
+
+    transform: scale(1.05);
+}
+
+/* Quests */
+
+.quest {
+    background: #f8edeb;
+
+    padding: 15px;
+
+    margin: 10px 0;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+}
+
+.quest:hover {
+    background: #ffe5ec;
+}
+
+/* Achievements */
+
+.badges {
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.badges {
+    font-size: 20px;
+}
+
+/* Cottage */
+
+.cottage {
+    font-size: 50px;
+
+    text-align: center;
+
+    padding: 30px;
+
+    background: linear-gradient(180deg, #bde0fe, #caffbf);
+
+    border-radius: 25px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .stats {
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    header h1 {
+        font-size: 35px;
+    }
+}
