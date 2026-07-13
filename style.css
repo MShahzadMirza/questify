@@ -282,3 +282,12 @@ button:hover {
         font-size: 35px;
     }
 }
+.friendBar {
+    height: 100%;
+
+    width: 0%;
+
+    background: linear-gradient(90deg, #ffd166, #ff9f1c);
+
+    border-radius: 20px;
+}

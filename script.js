@@ -18,8 +18,14 @@ let player = {
     qiLevel: 1,
 };
 
-let profile = {
+let profile = JSON.parse(localStorage.getItem('questifyProfile')) || {
     name: 'Student',
+
+    grade: 'Not Set',
+
+    goal: 'Not Set',
+
+    style: 'Not Set',
 };
 
 // Get elements
@@ -300,6 +306,8 @@ showSubjects();
 function increaseQiFriendship() {
     player.qiFriendship += 5;
 
+    console.log('Qi Friendship:', player.qiFriendship);
+
     if (player.qiFriendship >= 100) {
         player.qiFriendship = 0;
 
@@ -418,27 +426,52 @@ function showTodayTasks() {
     });
 }
 
+// Complete Study Quest
+
 function completeTask(subjectIndex, taskIndex) {
-    alert('Task clicked!');
     let task = subjects[subjectIndex].tasks[taskIndex];
 
-    if (task.completed === false) {
+    if (!task.completed) {
         task.completed = true;
 
-        gainXP(20);
+        // Rewards
+        player.xp += 20;
 
+        player.coins += 10;
+
+        increaseQiFriendship();
         subjects[subjectIndex].progress += 5;
 
         if (subjects[subjectIndex].progress > 100) {
             subjects[subjectIndex].progress = 100;
         }
 
-        speech.textContent = 'Yay! Quest complete! Great job! 🦊✨';
-    } else {
-        task.completed = false;
+        // Level system
+        if (player.xp >= 100) {
+            player.level++;
 
-        speech.textContent = 'We can try again! 🌸';
+            player.xp = 0;
+
+            player.coins += 100;
+
+            speech.textContent = '🎉 Level up! Qi is proud of you 🦊✨';
+        } else {
+            speech.textContent = 'Yay! Quest completed! Great job 🌸🦊';
+        }
+    } else {
+        let undoQuest = confirm(
+            "🌸 Do you want to mark this quest as incomplete?\n\nYour XP, Coins, Friendship, and Subject Growth will stay because you've already earned them. 🦊",
+        );
+
+        if (undoQuest) {
+            task.completed = false;
+
+            speech.textContent =
+                "No worries! You can complete it again whenever you're ready. 🌱";
+        }
     }
+
+    saveGame();
 
     saveSubjects();
 
@@ -449,16 +482,46 @@ function completeTask(subjectIndex, taskIndex) {
     updateScreen();
 }
 
+// Profile starts here
+
 const playerName = document.getElementById('playerName');
 
-const changeNameButton = document.getElementById('changeName');
+const playerGrade = document.getElementById('playerGrade');
 
-changeNameButton.addEventListener('click', function () {
-    let newName = prompt('What is your name?');
+const playerGoal = document.getElementById('playerGoal');
+
+const playerStyle = document.getElementById('playerStyle');
+
+const editProfile = document.getElementById('editProfile');
+
+editProfile.addEventListener('click', function () {
+    let newName = prompt('What is your name? 👤', profile.name);
+
+    let newGrade = prompt('What grade are you in? 🎓', profile.grade);
+
+    let newGoal = prompt('What is your study goal? 🎯', profile.goal);
+
+    let newStyle = prompt('What is your study style? ☁️', profile.style);
 
     if (newName) {
         profile.name = newName;
-
-        playerName.textContent = profile.name;
     }
+
+    if (newGrade) {
+        profile.grade = newGrade;
+    }
+
+    if (newGoal) {
+        profile.goal = newGoal;
+    }
+
+    if (newStyle) {
+        profile.style = newStyle;
+    }
+
+    localStorage.setItem('questifyProfile', JSON.stringify(profile));
+
+    updateProfile();
+
+    speech.textContent = "Nice to meet you! Let's grow together 🦊🌸";
 });
