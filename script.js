@@ -18,6 +18,10 @@ let player = {
     qiLevel: 1,
 };
 
+let profile = {
+    name: 'Student',
+};
+
 // Get elements
 
 const levelText = document.getElementById('level');
@@ -187,8 +191,7 @@ let subjects = JSON.parse(localStorage.getItem('questifySubjects')) || [
         name: 'Mathematics',
         emoji: '📐',
         progress: 20,
-        tasks:[]
-
+        tasks: [],
     },
 ];
 
@@ -445,3 +448,17 @@ function completeTask(subjectIndex, taskIndex) {
 
     updateScreen();
 }
+
+const playerName = document.getElementById('playerName');
+
+const changeNameButton = document.getElementById('changeName');
+
+changeNameButton.addEventListener('click', function () {
+    let newName = prompt('What is your name?');
+
+    if (newName) {
+        profile.name = newName;
+
+        playerName.textContent = profile.name;
+    }
+});
