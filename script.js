@@ -27,7 +27,68 @@ let profile = JSON.parse(localStorage.getItem('questifyProfile')) || {
 
     style: 'Not Set',
 };
+let companion = JSON.parse(localStorage.getItem('questifyCompanion')) || {
+    name: 'Qi',
 
+    emoji: '🦊',
+
+    personality: 'Calm',
+
+    messages: [
+        'Small steps create big adventures 🌱',
+
+        "Great job! Let's continue together 🦊",
+
+        "Don't forget to rest too ☁️",
+    ],
+};
+const companions = [
+    {
+        name: 'Qi',
+        emoji: '🦊',
+        personality: 'Calm',
+        messages: [
+            'Small steps create big adventures 🌱',
+            "Great job! Let's continue together 🦊",
+            "Don't forget to rest too ☁️",
+        ],
+    },
+
+    {
+        name: 'Mochi',
+        emoji: '🐱',
+        personality: 'Sleepy',
+        messages: [
+            "Let's study a little, then have a cozy break 😺",
+            'Slow progress is still progress 🌸',
+            'Curl up with a good book today 📖',
+        ],
+    },
+
+    {
+        name: 'Biscuit',
+        emoji: '🐶',
+        personality: 'Energetic',
+        messages: [
+            "Let's do this together! ⭐",
+            "You're doing pawsome! 🐶",
+            'One more quest! I believe in you!',
+        ],
+    },
+
+    {
+        name: 'Clover',
+        emoji: '🐰',
+        personality: 'Gentle',
+        messages: [
+            "Let's hop through today's study gently 🌼",
+            'Every page you read helps you grow 🌱',
+            "Take your time. You're doing great 🐰",
+        ],
+    },
+];
+let currentCompanion =
+    JSON.parse(localStorage.getItem('questifyCompanion')) || companions[0];
 // Get elements
 
 const levelText = document.getElementById('level');
@@ -46,6 +107,10 @@ const friendBar = document.querySelector('.friendBar');
 
 const qiLevelText = document.getElementById('qiLevel');
 const speech = document.querySelector('.speech');
+const companionEmoji = document.getElementById('companionEmoji');
+
+const companionName = document.getElementById('companionName');
+const companionList = document.getElementById('companionList');
 
 // Qi Messages
 
@@ -96,7 +161,13 @@ function gainXP(amount) {
         levelUp();
     }
 
-    changeQiMessage();
+    function changeQiMessage() {
+        let random = Math.floor(
+            Math.random() * currentCompanion.messages.length,
+        );
+
+        speech.textContent = currentCompanion.messages[random];
+    }
 
     updateScreen();
 }
@@ -493,35 +564,123 @@ const playerGoal = document.getElementById('playerGoal');
 const playerStyle = document.getElementById('playerStyle');
 
 const editProfile = document.getElementById('editProfile');
+function updateProfile() {
+    playerName.textContent = profile.name;
+
+    playerGrade.textContent = profile.grade;
+
+    playerGoal.textContent = profile.goal;
+
+    playerStyle.textContent = profile.style;
+}
+function updateCompanion() {
+    companionEmoji.textContent = currentCompanion.emoji;
+
+    companionName.textContent = currentCompanion.name;
+}
+
+function showCompanions() {
+    companionList.innerHTML = '';
+
+    companions.forEach(function (companion, index) {
+        companionList.innerHTML += `
+
+        <div class="companionCard ${currentCompanion.name === companion.name ? 'selected' : ''}"
+
+        onclick="chooseCompanion(${index})">
+
+            <h3>${companion.emoji} ${companion.name}</h3>
+
+            <p>${companion.personality}</p>
+
+        </div>
+
+        `;
+    });
+}
 
 editProfile.addEventListener('click', function () {
-    let newName = prompt('What is your name? 👤', profile.name);
+    let choice = prompt(
+        `🦊 What would you like to edit?
 
-    let newGrade = prompt('What grade are you in? 🎓', profile.grade);
+1. 👤 Name
+2. 🎓 Grade
+3. 🎯 Goal
+4. ☁️ Study Style
 
-    let newGoal = prompt('What is your study goal? 🎯', profile.goal);
+Type 1, 2, 3 or 4.
+Press Cancel to close.`,
+    );
 
-    let newStyle = prompt('What is your study style? ☁️', profile.style);
-
-    if (newName) {
-        profile.name = newName;
+    if (choice === null) {
+        return;
     }
 
-    if (newGrade) {
-        profile.grade = newGrade;
-    }
+    switch (choice) {
+        case '1':
+            let newName = prompt('👤 Enter your name:', profile.name);
 
-    if (newGoal) {
-        profile.goal = newGoal;
-    }
+            if (newName !== null && newName !== '') {
+                profile.name = newName;
+            }
 
-    if (newStyle) {
-        profile.style = newStyle;
+            break;
+
+        case '2':
+            let newGrade = prompt('🎓 Enter your grade:', profile.grade);
+
+            if (newGrade !== null && newGrade !== '') {
+                profile.grade = newGrade;
+            }
+
+            break;
+
+        case '3':
+            let newGoal = prompt('🎯 Enter your study goal:', profile.goal);
+
+            if (newGoal !== null && newGoal !== '') {
+                profile.goal = newGoal;
+            }
+
+            break;
+
+        case '4':
+            let newStyle = prompt('☁️ Enter your study style:', profile.style);
+
+            if (newStyle !== null && newStyle !== '') {
+                profile.style = newStyle;
+            }
+
+            break;
+
+        default:
+            alert('🌸 Please choose 1, 2, 3 or 4.');
+
+            return;
     }
 
     localStorage.setItem('questifyProfile', JSON.stringify(profile));
 
     updateProfile();
 
-    speech.textContent = "Nice to meet you! Let's grow together 🦊🌸";
+    speech.textContent = '✨ Your profile has been updated!';
+});
+updateProfile();
+updateCompanion();
+showCompanions();
+// 🌸 Sidebar
+
+const menuButton = document.getElementById('menuButton');
+
+const sidebar = document.getElementById('sidebar');
+
+menuButton.addEventListener('click', function () {
+    sidebar.classList.toggle('open');
+});
+// 🌸 Close sidebar when clicking outside
+
+document.addEventListener('click', function (event) {
+    if (!sidebar.contains(event.target) && !menuButton.contains(event.target)) {
+        sidebar.classList.remove('open');
+    }
 });

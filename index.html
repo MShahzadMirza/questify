@@ -10,7 +10,53 @@
     </head>
 
     <body>
-        <div class="app">
+<!-- 🌸 Menu Button -->
+
+<button id="menuButton" class="menuButton">
+    🌸
+</button>
+<div class="layout">
+<!-- 🌸 Sidebar -->
+
+<div id="sidebar" class="sidebar">
+
+    <h2>🌸 Questify</h2>
+
+    <p class="sidebarSubtitle">
+        Cozy Study Adventure
+    </p>
+
+    <button class="navButton">🏠 Home</button>
+
+    <button class="navButton">👤 Profile</button>
+
+    <button class="navButton">🐾 Companion</button>
+
+    <button class="navButton">🌱 Garden</button>
+
+    <button class="navButton">🎯 Quests</button>
+
+    <button class="navButton">📅 Timetable</button>
+
+    <button class="navButton">📝 Exams</button>
+
+    <button class="navButton">☀️ Summer Tasks</button>
+
+    <button class="navButton">⚙️ Settings</button>
+
+    <hr>
+
+    <p class="sidebarQi">
+
+        🦊
+
+        Small steps create big adventures.
+
+    </p>
+
+</div>
+    
+    <div class="app">
             <!-- Header -->
             <header>
                 <h1>🌸 Questify</h1>
@@ -45,7 +91,13 @@
 
                 <button id="editProfile">✏️ Edit Profile</button>
             </section>
+            <!-- Companion Selection -->
 
+            <section class="card">
+                <h2>🐾 Choose Your Study Buddy</h2>
+
+                <div id="companionList"></div>
+            </section>
             <!-- Player Stats -->
 
             <section class="stats card">
@@ -68,10 +120,9 @@
             <!-- Qi Fox Area -->
 
             <section class="qi card">
-                <div class="fox">🦊</div>
+                <div class="fox" id="companionEmoji">🦊</div>
 
-                <h2>Qi</h2>
-
+                <h2 id="companionName">Qi</h2>
                 <div class="speech">
                     "Hi! I'm Qi 🌸 Ready for today's little adventure?"
                 </div>
@@ -156,7 +207,27 @@
                 <div class="cottage">🌸 ☁️ 🦊 ☁️ 🌸</div>
             </section>
         </div>
+        <!-- 🌸 Cozy Popup -->
 
-        <script src="script.js"></script>
-    </body>
+        <div id="popupOverlay" class="popupOverlay">
+            <div class="popupCard">
+                <h2 id="popupTitle">🌸 Popup</h2>
+
+                <input type="text" id="popupInput" placeholder="Type here..." />
+
+                <div class="popupButtons">
+                    <button id="popupSave">💾 Save</button>
+
+                    <button id="popupCancel">❌ Cancel</button>
+                </div>
+            </div>
+        </div>
+
+            </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
 </html>
