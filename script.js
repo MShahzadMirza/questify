@@ -586,6 +586,20 @@ function showCompanions() {
         `;
     });
 }
+function chooseCompanion(index) {
+    currentCompanion = companions[index];
+
+    localStorage.setItem('questifyCompanion', JSON.stringify(currentCompanion));
+
+    updateCompanion();
+
+    showCompanions();
+
+    speech.textContent =
+        currentCompanion.messages[
+            Math.floor(Math.random() * currentCompanion.messages.length)
+        ];
+}
 
 editProfile.addEventListener('click', function () {
     let choice = prompt(
@@ -675,7 +689,7 @@ document.addEventListener('click', function (event) {
 });
 // 🌸 Page Navigation
 
-const navButtons = document.querySelectorAll('.navButton');
+const navButtons = document.querySelectorAll('.navButton[data-page]');
 const pages = document.querySelectorAll('.page');
 
 function showPage(pageId) {
@@ -683,7 +697,11 @@ function showPage(pageId) {
         page.style.display = 'none';
     });
 
-    document.getElementById(pageId).style.display = 'block';
+    const page = document.getElementById(pageId);
+
+    if (page) {
+        page.style.display = 'block';
+    }
 
     sidebar.classList.remove('open');
 }
@@ -694,5 +712,5 @@ navButtons.forEach(function (button) {
     });
 });
 
-// Show Home page when the app starts
+// Show Home when Questify starts
 showPage('homePage');
