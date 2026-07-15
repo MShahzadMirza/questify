@@ -274,72 +274,60 @@ let subjects = JSON.parse(localStorage.getItem('questifySubjects')) || [
 
 console.log(subjects);
 
+const addSubjectButton = document.getElementById('addSubject');
 const subjectBox = document.getElementById('subjects');
 
-const addSubjectButton = document.getElementById('addSubject');
-
 function showSubjects() {
+    if (!subjectBox) return;
+
     subjectBox.innerHTML = '';
 
     subjects.forEach(function (subject, index) {
         subjectBox.innerHTML += `
 
-
         <div class="subject" onclick="openSubject(${index})">
 
-
             <h3>
-            ${subject.emoji}
-            ${subject.name}
+                ${subject.emoji}
+                ${subject.name}
             </h3>
 
-
             <div class="bar">
-
-                <div 
-                class="progress"
+                <div class="progress"
                 style="width:${subject.progress}%">
-
                 </div>
-
             </div>
 
-
-            <p>
-            ${getPlant(subject.progress)}
-            </p>
-
+            <p>${getPlant(subject.progress)}</p>
 
         </div>
-
 
         `;
     });
 
     saveSubjects();
 }
+if (addSubjectButton) {
+    addSubjectButton.addEventListener('click', function () {
+        let name = prompt('What subject do you want to grow? 📚');
 
-addSubjectButton.addEventListener('click', function () {
-    let name = prompt('What subject do you want to grow? 📚');
+        if (name) {
+            let emoji = prompt('Choose an emoji 🌸');
 
-    if (name) {
-        let emoji = prompt('Choose an emoji 🌸');
+            if (!emoji) {
+                emoji = '📚';
+            }
 
-        if (!emoji) {
-            emoji = '📚';
+            subjects.push({
+                name: name,
+                emoji: emoji,
+                progress: 0,
+            });
+
+            showSubjects();
         }
-
-        subjects.push({
-            name: name,
-
-            emoji: emoji,
-
-            progress: 0,
-        });
-
-        showSubjects();
-    }
-});
+    });
+}
 // 🌱 Grow Subject
 
 function growSubject() {
@@ -443,31 +431,31 @@ function showTasks() {
 
 const addTaskButton = document.getElementById('addTask');
 
-addTaskButton.addEventListener('click', function () {
-    if (currentSubject === null) {
-        return;
-    }
-
-    let taskName = prompt('What quest do you want to add? 🎯');
-
-    if (taskName) {
-        if (!subjects[currentSubject].tasks) {
-            subjects[currentSubject].tasks = [];
+if (addTaskButton) {
+    addTaskButton.addEventListener('click', function () {
+        if (currentSubject === null) {
+            return;
         }
 
-        subjects[currentSubject].tasks.push({
-            text: taskName,
+        let taskName = prompt('What quest do you want to add? 🎯');
 
-            completed: false,
-        });
+        if (taskName) {
+            if (!subjects[currentSubject].tasks) {
+                subjects[currentSubject].tasks = [];
+            }
 
-        saveSubjects();
+            subjects[currentSubject].tasks.push({
+                text: taskName,
+                completed: false,
+            });
 
-        showTasks();
+            saveSubjects();
+            showTasks();
 
-        speech.textContent = "New quest added! Let's do it! 🦊✨";
-    }
-});
+            speech.textContent = "New quest added! Let's do it! 🦊✨";
+        }
+    });
+}
 function showTodayTasks() {
     todayTasks.innerHTML = '';
 
@@ -667,11 +655,12 @@ Press Cancel to close.`,
 });
 updateProfile();
 updateCompanion();
-showCompanions();
+if (companionList) {
+    showCompanions();
+}
 // 🌸 Sidebar
 
 const menuButton = document.getElementById('menuButton');
-
 const sidebar = document.getElementById('sidebar');
 
 menuButton.addEventListener('click', function () {
@@ -684,3 +673,26 @@ document.addEventListener('click', function (event) {
         sidebar.classList.remove('open');
     }
 });
+// 🌸 Page Navigation
+
+const navButtons = document.querySelectorAll('.navButton');
+const pages = document.querySelectorAll('.page');
+
+function showPage(pageId) {
+    pages.forEach(function (page) {
+        page.style.display = 'none';
+    });
+
+    document.getElementById(pageId).style.display = 'block';
+
+    sidebar.classList.remove('open');
+}
+
+navButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        showPage(button.dataset.page);
+    });
+});
+
+// Show Home page when the app starts
+showPage('homePage');

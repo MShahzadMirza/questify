@@ -10,224 +10,236 @@
     </head>
 
     <body>
-<!-- 🌸 Menu Button -->
+        <!-- 🌸 Menu Button -->
 
-<button id="menuButton" class="menuButton">
-    🌸
-</button>
-<div class="layout">
-<!-- 🌸 Sidebar -->
+        <button id="menuButton" class="menuButton">🌸</button>
+        <div class="layout">
+            <!-- 🌸 Sidebar -->
 
-<div id="sidebar" class="sidebar">
+            <div id="sidebar" class="sidebar">
+                <h2>🌸 Questify</h2>
 
-    <h2>🌸 Questify</h2>
+                <p class="sidebarSubtitle">Cozy Study Adventure</p>
+                <button class="navButton" data-page="homePage">🏠 Home</button>
 
-    <p class="sidebarSubtitle">
-        Cozy Study Adventure
-    </p>
+                <button class="navButton" data-page="profilePage">
+                    👤 Profile
+                </button>
 
-    <button class="navButton">🏠 Home</button>
+                <button class="navButton" data-page="companionPage">
+                    🐾 Companion
+                </button>
 
-    <button class="navButton">👤 Profile</button>
+                <button class="navButton" data-page="gardenPage">
+                    🌱 Garden
+                </button>
 
-    <button class="navButton">🐾 Companion</button>
+                <button class="navButton" data-page="questsPage">
+                    🎯 Quests
+                </button>
 
-    <button class="navButton">🌱 Garden</button>
+                <button class="navButton" data-page="timetablePage">
+                    📅 Timetable
+                </button>
 
-    <button class="navButton">🎯 Quests</button>
+                <button class="navButton" data-page="examsPage">
+                    📝 Exams
+                </button>
 
-    <button class="navButton">📅 Timetable</button>
+                <button class="navButton" data-page="summerPage">
+                    ☀️ Summer Tasks
+                </button>
 
-    <button class="navButton">📝 Exams</button>
+                <button class="navButton" data-page="settingsPage">
+                    ⚙️ Settings
+                </button>
+                <hr />
 
-    <button class="navButton">☀️ Summer Tasks</button>
+                <p class="sidebarQi">🦊 Small steps create big adventures.</p>
+            </div>
 
-    <button class="navButton">⚙️ Settings</button>
+            <div class="app">
+                <!-- 🌸 Pages -->
 
-    <hr>
+                <div id="pages">
+                    <!-- Home Page -->
 
-    <p class="sidebarQi">
+                    <section id="homePage" class="page">
+                        <!-- Header -->
 
-        🦊
+                        <header>
+                            <h1>🌸 Questify</h1>
+                            <p>Cozy Study Adventures with Qi 🦊</p>
+                        </header>
 
-        Small steps create big adventures.
+                        <!-- Player Stats -->
 
-    </p>
+                        <section class="stats card">
+                            <div>
+                                ⭐ Level
+                                <span id="level">1</span>
+                            </div>
 
-</div>
-    
-    <div class="app">
-            <!-- Header -->
-            <header>
-                <h1>🌸 Questify</h1>
+                            <div>
+                                💰 Coins
+                                <span id="coins">0</span>
+                            </div>
 
-                <p>Cozy Study Adventures with Qi 🦊</p>
-            </header>
+                            <div>
+                                🔥 Streak
+                                <span id="streak">0</span>
+                            </div>
+                        </section>
 
-            <!-- Profile -->
+                        <!-- Qi Companion -->
 
-            <section class="card profile">
-                <h2>👤 My Cozy Profile</h2>
+                        <section class="qi card">
+                            <div class="fox" id="companionEmoji">🦊</div>
 
-                <p>
-                    👤 Name:
-                    <span id="playerName">Student</span>
-                </p>
+                            <h2 id="companionName">Qi</h2>
 
-                <p>
-                    🎓 Grade:
-                    <span id="playerGrade">Not Set</span>
-                </p>
+                            <div class="speech">
+                                "Hi! I'm Qi 🌸 Ready for today's little
+                                adventure?"
+                            </div>
 
-                <p>
-                    🎯 Goal:
-                    <span id="playerGoal">Not Set</span>
-                </p>
+                            <div class="mood">
+                                ❤️ Qi Happiness
 
-                <p>
-                    ☁️ Study Style:
-                    <span id="playerStyle">Not Set</span>
-                </p>
+                                <div class="bar">
+                                    <div class="happiness"></div>
+                                </div>
+                            </div>
 
-                <button id="editProfile">✏️ Edit Profile</button>
-            </section>
-            <!-- Companion Selection -->
+                            <div class="friendship">
+                                ⭐ Qi Friendship
 
-            <section class="card">
-                <h2>🐾 Choose Your Study Buddy</h2>
+                                <div class="bar">
+                                    <div class="friendBar"></div>
+                                </div>
 
-                <div id="companionList"></div>
-            </section>
-            <!-- Player Stats -->
+                                <p>
+                                    Friendship Level:
+                                    <span id="qiLevel">1</span>
+                                </p>
+                            </div>
+                        </section>
 
-            <section class="stats card">
-                <div>
-                    ⭐ Level
-                    <span id="level">1</span>
+                        <!-- XP -->
+
+                        <section class="card">
+                            <h2>⭐ Experience</h2>
+
+                            <div class="bar">
+                                <div class="xp"></div>
+                            </div>
+
+                            <p><span id="xp">0</span> / 100 XP</p>
+                        </section>
+
+                        <!-- Achievements -->
+
+                        <section class="card">
+                            <h2>🏆 Memories</h2>
+
+                            <div class="badges">
+                                🌱 First Step 🍵 Cozy Learner 🦊 Qi's Friend
+                            </div>
+                        </section>
+
+                        <!-- Qi Cottage -->
+
+                        <section class="card">
+                            <h2>🏡 Qi's Cottage</h2>
+
+                            <div class="cottage">🌸 ☁️ 🦊 ☁️ 🌸</div>
+                        </section>
+                    </section>
+                    <!-- Profile -->
+
+                    <section
+                        class="card profile page"
+                        id="profilePage"
+                        style="display: none"
+                    >
+                        <h2>👤 My Cozy Profile</h2>
+
+                        <p>
+                            👤 Name:
+                            <span id="playerName">Student</span>
+                        </p>
+
+                        <p>
+                            🎓 Grade:
+                            <span id="playerGrade">Not Set</span>
+                        </p>
+
+                        <p>
+                            🎯 Goal:
+                            <span id="playerGoal">Not Set</span>
+                        </p>
+
+                        <p>
+                            ☁️ Study Style:
+                            <span id="playerStyle">Not Set</span>
+                        </p>
+
+                        <button id="editProfile">✏️ Edit Profile</button>
+                    </section>
                 </div>
+                <!-- 🌱 Garden -->
 
-                <div>
-                    💰 Coins
-                    <span id="coins">0</span>
-                </div>
+                <section class="card page" id="gardenPage">
+                    <h2>🌱 My Study Garden</h2>
 
-                <div>
-                    🔥 Streak
-                    <span id="streak">0</span>
-                </div>
-            </section>
+                    <div id="subjects"></div>
 
-            <!-- Qi Fox Area -->
+                    <button id="addSubject">➕ Add Subject</button>
+                </section>
 
-            <section class="qi card">
-                <div class="fox" id="companionEmoji">🦊</div>
+                <!-- 🏡 Subject Room -->
 
-                <h2 id="companionName">Qi</h2>
-                <div class="speech">
-                    "Hi! I'm Qi 🌸 Ready for today's little adventure?"
-                </div>
+                <section class="card" id="subjectRoom" style="display: none">
+                    <h2>🏡 Subject Room</h2>
 
-                <div class="mood">
-                    ❤️ Qi Happiness
+                    <h3 id="roomTitle"></h3>
 
-                    <div class="bar">
-                        <div class="happiness"></div>
+                    <div id="roomTasks"></div>
+
+                    <button id="addTask">➕ Add Task</button>
+
+                    <button id="backGarden">🌱 Back to Garden</button>
+                </section>
+
+                <!-- 🎯 Today's Quests -->
+
+                <section class="card page" id="questsPage">
+                    <h2>🎯 Today's Quests</h2>
+
+                    <div id="todayTasks"></div>
+                </section>
+                <!-- 🌸 Cozy Popup -->
+
+                <div id="popupOverlay" class="popupOverlay">
+                    <div class="popupCard">
+                        <h2 id="popupTitle">🌸 Popup</h2>
+
+                        <input
+                            type="text"
+                            id="popupInput"
+                            placeholder="Type here..."
+                        />
+
+                        <div class="popupButtons">
+                            <button id="popupSave">💾 Save</button>
+
+                            <button id="popupCancel">❌ Cancel</button>
+                        </div>
                     </div>
-                </div>
-                <div class="friendship">
-                    ⭐ Qi Friendship
-
-                    <div class="bar">
-                        <div class="friendBar"></div>
-                    </div>
-
-                    <p>
-                        Friendship Level:
-                        <span id="qiLevel">1</span>
-                    </p>
-                </div>
-            </section>
-
-            <!-- XP -->
-
-            <section class="card">
-                <h2>⭐ Experience</h2>
-
-                <div class="bar">
-                    <div class="xp"></div>
-                </div>
-
-                <p><span id="xp">0</span> / 100 XP</p>
-            </section>
-
-            <!-- Subjects -->
-
-            <section class="card">
-                <h2>🌱 My Study Garden</h2>
-
-                <div id="subjects"></div>
-
-                <button id="addSubject">➕ Add Subject</button>
-            </section>
-
-            <!-- Quests -->
-
-            <section class="card">
-                <h2>🎯 Today's Quests</h2>
-
-                <div id="todayTasks"></div>
-            </section>
-
-            <!-- Achievements -->
-
-            <section class="card">
-                <h2>🏆 Memories</h2>
-
-                <div class="badges">
-                    🌱 First Step 🍵 Cozy Learner 🦊 Qi's Friend
-                </div>
-            </section>
-            <!-- Subject Room -->
-            <section class="card" id="subjectRoom" style="display: none">
-                <h2>🏡 Subject Room</h2>
-
-                <h3 id="roomTitle"></h3>
-
-                <div id="roomTasks"></div>
-
-                <button id="addTask">➕ Add Task</button>
-
-                <button id="backGarden">🌱 Back to Garden</button>
-            </section>
-            <!-- Fox Home -->
-
-            <section class="card">
-                <h2>🏡 Qi's Cottage</h2>
-
-                <div class="cottage">🌸 ☁️ 🦊 ☁️ 🌸</div>
-            </section>
-        </div>
-        <!-- 🌸 Cozy Popup -->
-
-        <div id="popupOverlay" class="popupOverlay">
-            <div class="popupCard">
-                <h2 id="popupTitle">🌸 Popup</h2>
-
-                <input type="text" id="popupInput" placeholder="Type here..." />
-
-                <div class="popupButtons">
-                    <button id="popupSave">💾 Save</button>
-
-                    <button id="popupCancel">❌ Cancel</button>
                 </div>
             </div>
         </div>
 
-            </div>
-
-</div>
-
-<script src="script.js"></script>
-
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>
