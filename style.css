@@ -282,6 +282,7 @@ button:hover {
         font-size: 35px;
     }
 }
+
 .friendBar {
     height: 100%;
 
@@ -291,6 +292,7 @@ button:hover {
 
     border-radius: 20px;
 }
+
 /* 🌸 Cozy Popup */
 
 .popupOverlay {
@@ -384,6 +386,7 @@ button:hover {
         opacity: 1;
     }
 }
+
 /* Companion Cards */
 
 .companionCard {
@@ -419,6 +422,7 @@ button:hover {
 .companionCard p {
     color: #7d6758;
 }
+
 /* 🌸 App Layout */
 
 .layout {
@@ -496,6 +500,7 @@ button:hover {
         position: relative;
     }
 }
+
 /* ===========================
    🌸 Questify Navigation
 =========================== */
@@ -547,6 +552,7 @@ button:hover {
 
     transition: 0.3s;
 }
+
 .menuButton:hover {
     background: #ff8fab;
 
@@ -616,6 +622,7 @@ button:hover {
 
     line-height: 1.5;
 }
+
 /* ===========================
    🐾 Companion Cards
 =========================== */
@@ -667,7 +674,7 @@ button:hover {
     padding: 25px;
     margin-bottom: 20px;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .welcomeCard h1 {
@@ -682,4 +689,145 @@ button:hover {
 
 .welcomeCard p {
     color: #666;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.statCard {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+    transition: .25s;
+}
+
+.statCard:hover {
+    transform: translateY(-5px);
+}
+
+.statEmoji {
+    font-size: 2rem;
+}
+
+.statCard h3 {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #777;
+}
+
+.statCard span {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ff7aa8;
+}
+
+.adventureCard {
+
+    background: #fff;
+
+    border-radius: 25px;
+
+    padding: 20px;
+
+    margin: 20px 0;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+
+}
+
+.adventureCard h2 {
+
+    margin-bottom: 20px;
+
+    color: #ff7aa8;
+
+}
+
+.adventureItem {
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #f2f2f2;
+
+    font-size: 18px;
+
+}
+
+.adventureItem:last-child {
+
+    border-bottom: none;
+
+}
+
+.card {
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .12);
+}
+.subjectCard{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:20px;
+
+    margin:20px 0;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.subjectCard:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.subjectTop{
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:center;
+
+    margin-bottom:15px;
+
+}
+
+.subjectEmoji{
+
+    font-size:3rem;
+
+}
+
+.subjectTop h3{
+
+    margin:0;
+
+}
+
+.progressText{
+
+    text-align:right;
+
+    color:#888;
+
+    margin-top:10px;
+
 }

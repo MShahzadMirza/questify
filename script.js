@@ -142,11 +142,15 @@ function updateScreen() {
     xpBar.style.width = player.xp + '%';
 
     happinessBar.style.width = player.happiness + '%';
+
     friendBar.style.width = player.qiFriendship + '%';
 
     qiLevelText.textContent = player.qiLevel;
-}
 
+    document.getElementById('xpLeft').textContent = 100 - player.xp;
+
+
+}
 // Add XP
 
 function gainXP(amount) {
@@ -285,24 +289,40 @@ function showSubjects() {
     subjects.forEach(function (subject, index) {
         subjectBox.innerHTML += `
 
-        <div class="subject" onclick="openSubject(${index})">
+<div class="subjectCard" onclick="openSubject(${index})">
 
-            <h3>
-                ${subject.emoji}
-                ${subject.name}
-            </h3>
+    <div class="subjectTop">
 
-            <div class="bar">
-                <div class="progress"
-                style="width:${subject.progress}%">
-                </div>
-            </div>
+        <div class="subjectEmoji">
+            ${subject.emoji}
+        </div>
+
+        <div>
+
+            <h3>${subject.name}</h3>
 
             <p>${getPlant(subject.progress)}</p>
 
         </div>
 
-        `;
+    </div>
+
+    <div class="bar">
+
+        <div
+            class="progress"
+            style="width:${subject.progress}%">
+        </div>
+
+    </div>
+
+    <p class="progressText">
+        ${subject.progress}% Complete
+    </p>
+
+</div>
+
+`;
     });
 
     saveSubjects();
@@ -597,7 +617,7 @@ function chooseCompanion(index) {
 
     speech.textContent =
         currentCompanion.messages[
-            Math.floor(Math.random() * currentCompanion.messages.length)
+        Math.floor(Math.random() * currentCompanion.messages.length)
         ];
 }
 
@@ -687,6 +707,7 @@ document.addEventListener('click', function (event) {
         sidebar.classList.remove('open');
     }
 });
+
 // 🌸 Page Navigation
 
 const navButtons = document.querySelectorAll('.navButton[data-page]');
@@ -714,3 +735,32 @@ navButtons.forEach(function (button) {
 
 // Show Home when Questify starts
 showPage('homePage');
+// 🌸 Qi talks every 10 seconds
+
+setInterval(function () {
+    changeQiMessage();
+}, 10000);
+
+// Greeting system
+
+function updateGreeting() {
+    const hour = new Date().getHours();
+
+    let greeting = "Welcome back!";
+
+    if (hour < 12) {
+        greeting = "🌅 Good Morning!";
+    } else if (hour < 18) {
+        greeting = "☀️ Good Afternoon!";
+    } else {
+        greeting = "🌙 Good Evening!";
+    }
+
+    const heading = document.querySelector(".welcomeCard h2");
+
+    if (heading) {
+        heading.textContent = greeting;
+    }
+}
+
+updateGreeting();

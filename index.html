@@ -23,21 +23,13 @@
             <p class="sidebarSubtitle">Cozy Study Adventure</p>
             <button class="navButton" data-page="homePage">🏠 Home</button>
 
-            <button class="navButton" data-page="profilePage">
-                👤 Profile
-            </button>
+            <button class="navButton" data-page="profilePage">👤 Profile</button>
 
-            <button class="navButton" data-page="companionPage">
-                🐾 Companion
-            </button>
+            <button class="navButton" data-page="companionPage">🐾 Companion</button>
 
-            <button class="navButton" data-page="gardenPage">
-                🌱 Garden
-            </button>
+            <button class="navButton" data-page="gardenPage">🌱 Garden</button>
 
-            <button class="navButton" data-page="questsPage">
-                🎯 Quests
-            </button>
+            <button class="navButton" data-page="questsPage">🎯 Quests</button>
 
             <button class="navButton">📅 Timetable</button>
 
@@ -58,6 +50,7 @@
                 <!-- Home Page -->
 
                 <section id="homePage" class="page">
+
                     <!-- Header -->
 
                     <header class="welcomeCard">
@@ -72,92 +65,119 @@
 
                     </header>
 
+
                     <!-- Player Stats -->
 
-                    <section class="stats card">
-                        <div>
-                            ⭐ Level
+                    <section class="statsGrid">
+
+                        <div class="statCard">
+                            <div class="statEmoji">⭐</div>
+                            <h3>Level</h3>
                             <span id="level">1</span>
                         </div>
 
-                        <div>
-                            💰 Coins
+                        <div class="statCard">
+                            <div class="statEmoji">💰</div>
+                            <h3>Coins</h3>
                             <span id="coins">0</span>
                         </div>
 
-                        <div>
-                            🔥 Streak
+                        <div class="statCard">
+                            <div class="statEmoji">🔥</div>
+                            <h3>Streak</h3>
                             <span id="streak">0</span>
                         </div>
-                    </section>
 
+                    </section>
+                    <section class="card adventureCard">
+
+                        <h2>🌸 Today's Adventure</h2>
+
+                        <div class="adventureItem">
+                            📚 <span id="todayQuestCount">0</span> Quests Today
+                        </div>
+
+                        <div class="adventureItem">
+                            🌱 <span id="subjectCount">1</span> Subjects Growing
+                        </div>
+
+                        <div class="adventureItem">
+                            ⭐ <span id="xpLeft">100</span> XP Until Level Up
+                        </div>
+
+                    </section>
                     <!-- Qi Companion -->
 
-                    <section class="qi card">
-                        <div class="fox" id="companionEmoji">🦊</div>
+                    <section class="qiHomeCard">
 
-                        <h2 id="companionName">Qi</h2>
+                        <div class="qiAvatar" id="companionEmoji">🦊</div>
 
-                        <div class="speech">
-                            "Hi! I'm Qi 🌸 Ready for today's little
-                            adventure?"
-                        </div>
+                        <div class="qiInfo">
 
-                        <div class="mood">
-                            ❤️ Qi Happiness
+                            <h2 id="companionName">Qi</h2>
 
-                            <div class="bar">
-                                <div class="happiness"></div>
-                            </div>
-                        </div>
-
-                        <div class="friendship">
-                            ⭐ Qi Friendship
-
-                            <div class="bar">
-                                <div class="friendBar"></div>
-                            </div>
-
-                            <p>
-                                Friendship Level:
-                                <span id="qiLevel">1</span>
+                            <p class="speech">
+                                "Hi! I'm Qi 🌸 Ready for today's little adventure?"
                             </p>
+
                         </div>
+
                     </section>
-
-                    <!-- XP -->
-
-                    <section class="card">
-                        <h2>⭐ Experience</h2>
+                    <div class="mood">
+                        ❤️ Qi Happiness
 
                         <div class="bar">
-                            <div class="xp"></div>
+                            <div class="happiness"></div>
+                        </div>
+                    </div>
+
+                    <div class="friendship">
+                        ⭐ Qi Friendship
+
+                        <div class="bar">
+                            <div class="friendBar"></div>
                         </div>
 
-                        <p><span id="xp">0</span> / 100 XP</p>
-                    </section>
-
-                    <!-- Achievements -->
-
-                    <section class="card">
-                        <h2>🏆 Memories</h2>
-
-                        <div class="badges">
-                            🌱 First Step 🍵 Cozy Learner 🦊 Qi's Friend
-                        </div>
-                    </section>
-
-                    <!-- Qi Cottage -->
-
-                    <section class="card">
-                        <h2>🏡 Qi's Cottage</h2>
-
-                        <div class="cottage">🌸 ☁️ 🦊 ☁️ 🌸</div>
-                    </section>
+                        <p>
+                            Friendship Level:
+                            <span id="qiLevel">1</span>
+                        </p>
+                    </div>
                 </section>
+
+                <!-- XP -->
+
+                <section class="card">
+                    <h2>⭐ Experience</h2>
+
+                    <div class="bar">
+                        <div class="xp"></div>
+                    </div>
+
+                    <p><span id="xp">0</span> / 100 XP</p>
+                </section>
+
+                <!-- Achievements -->
+
+                <section class="card">
+                    <h2>🏆 Memories</h2>
+
+                    <div class="badges">
+                        🌱 First Step 🍵 Cozy Learner 🦊 Qi's Friend
+                    </div>
+                </section>
+
+                <!-- Qi Cottage -->
+
+                <section class="card">
+                    <h2>🏡 Qi's Cottage</h2>
+
+                    <div class="cottage">🌸 ☁️ 🦊 ☁️ 🌸</div>
+                </section>
+</section>
                 <!-- Profile -->
 
-                <section class="card profile page" id="profilePage" style="display: none">
+                <section class="card profile page" id="profilePage" style="display:none">
                     <h2>👤 My Cozy Profile</h2>
 
                     <p>
@@ -184,8 +204,7 @@
                 </section>
 
                 <!-- 🌱 Garden -->
-
-                <section class="card page" id="gardenPage">
+                <section class="card page" id="gardenPage" style="display:none">
                     <h2>🌱 My Study Garden</h2>
 
                     <div id="subjects"></div>
@@ -209,14 +228,14 @@
 
                 <!-- 🎯 Today's Quests -->
 
-                <section class="card page" id="questsPage">
+                <section class="card page" id="questsPage" style="display:none">
                     <h2>🎯 Today's Quests</h2>
 
                     <div id="todayTasks"></div>
                 </section>
                 <!-- 🐾 Companion Page -->
 
-                <section class="card page" id="companionPage">
+                <section class="card page" id="companionPage" style="display:none">
                     <h2>🐾 Choose Your Companion</h2>
 
                     <p>
@@ -247,5 +266,3 @@
 
     <script src="script.js"></script>
 </body>
-
-</html>
