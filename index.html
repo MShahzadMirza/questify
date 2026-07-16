@@ -1,254 +1,251 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Questify 🦊</title>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="stylesheet" href="style.css" />
-    </head>
+    <title>Questify 🦊</title>
 
-    <body>
-        <!-- 🌸 Menu Button -->
+    <link rel="stylesheet" href="style.css" />
+</head>
 
-        <button id="menuButton" class="menuButton">🌸</button>
-        <div class="layout">
-            <!-- 🌸 Sidebar -->
+<body>
+    <!-- 🌸 Menu Button -->
 
-            <div id="sidebar" class="sidebar">
-                <h2>🌸 Questify</h2>
+    <button id="menuButton" class="menuButton">🌸</button>
+    <div class="layout">
+        <!-- 🌸 Sidebar -->
 
-                <p class="sidebarSubtitle">Cozy Study Adventure</p>
-                <button class="navButton" data-page="homePage">🏠 Home</button>
+        <div id="sidebar" class="sidebar">
+            <h2>🌸 Questify</h2>
 
-                <button class="navButton" data-page="profilePage">
-                    👤 Profile
-                </button>
+            <p class="sidebarSubtitle">Cozy Study Adventure</p>
+            <button class="navButton" data-page="homePage">🏠 Home</button>
 
-                <button class="navButton" data-page="companionPage">
-                    🐾 Companion
-                </button>
+            <button class="navButton" data-page="profilePage">
+                👤 Profile
+            </button>
 
-                <button class="navButton" data-page="gardenPage">
-                    🌱 Garden
-                </button>
+            <button class="navButton" data-page="companionPage">
+                🐾 Companion
+            </button>
 
-                <button class="navButton" data-page="questsPage">
-                    🎯 Quests
-                </button>
+            <button class="navButton" data-page="gardenPage">
+                🌱 Garden
+            </button>
 
-                <button class="navButton">📅 Timetable</button>
+            <button class="navButton" data-page="questsPage">
+                🎯 Quests
+            </button>
 
-                <button class="navButton">📝 Exams</button>
+            <button class="navButton">📅 Timetable</button>
 
-                <button class="navButton">☀️ Summer Tasks</button>
+            <button class="navButton">📝 Exams</button>
 
-                <button class="navButton">⚙️ Settings</button>
-                <hr />
+            <button class="navButton">☀️ Summer Tasks</button>
 
-                <p class="sidebarQi">🦊 Small steps create big adventures.</p>
-            </div>
+            <button class="navButton">⚙️ Settings</button>
+            <hr />
 
-            <div class="app">
-                <!-- 🌸 Pages -->
+            <p class="sidebarQi">🦊 Small steps create big adventures.</p>
+        </div>
 
-                <div id="pages">
-                    <!-- Home Page -->
+        <div class="app">
+            <!-- 🌸 Pages -->
 
-                    <section id="homePage" class="page">
-                        <!-- Header -->
+            <div id="pages">
+                <!-- Home Page -->
 
-                        <header>
-                            <h1>🌸 Questify</h1>
-                            <p>Cozy Study Adventures with Qi 🦊</p>
-                        </header>
+                <section id="homePage" class="page">
+                    <!-- Header -->
 
-                        <!-- Player Stats -->
+                    <header class="welcomeCard">
 
-                        <section class="stats card">
-                            <div>
-                                ⭐ Level
-                                <span id="level">1</span>
-                            </div>
+                        <h1>🌸 Questify</h1>
 
-                            <div>
-                                💰 Coins
-                                <span id="coins">0</span>
-                            </div>
+                        <h2>Welcome back!</h2>
 
-                            <div>
-                                🔥 Streak
-                                <span id="streak">0</span>
-                            </div>
-                        </section>
+                        <p>
+                            Your cozy study adventure is waiting.
+                        </p>
 
-                        <!-- Qi Companion -->
+                    </header>
 
-                        <section class="qi card">
-                            <div class="fox" id="companionEmoji">🦊</div>
+                    <!-- Player Stats -->
 
-                            <h2 id="companionName">Qi</h2>
+                    <section class="stats card">
+                        <div>
+                            ⭐ Level
+                            <span id="level">1</span>
+                        </div>
 
-                            <div class="speech">
-                                "Hi! I'm Qi 🌸 Ready for today's little
-                                adventure?"
-                            </div>
+                        <div>
+                            💰 Coins
+                            <span id="coins">0</span>
+                        </div>
 
-                            <div class="mood">
-                                ❤️ Qi Happiness
+                        <div>
+                            🔥 Streak
+                            <span id="streak">0</span>
+                        </div>
+                    </section>
 
-                                <div class="bar">
-                                    <div class="happiness"></div>
-                                </div>
-                            </div>
+                    <!-- Qi Companion -->
 
-                            <div class="friendship">
-                                ⭐ Qi Friendship
+                    <section class="qi card">
+                        <div class="fox" id="companionEmoji">🦊</div>
 
-                                <div class="bar">
-                                    <div class="friendBar"></div>
-                                </div>
+                        <h2 id="companionName">Qi</h2>
 
-                                <p>
-                                    Friendship Level:
-                                    <span id="qiLevel">1</span>
-                                </p>
-                            </div>
-                        </section>
+                        <div class="speech">
+                            "Hi! I'm Qi 🌸 Ready for today's little
+                            adventure?"
+                        </div>
 
-                        <!-- XP -->
-
-                        <section class="card">
-                            <h2>⭐ Experience</h2>
+                        <div class="mood">
+                            ❤️ Qi Happiness
 
                             <div class="bar">
-                                <div class="xp"></div>
+                                <div class="happiness"></div>
                             </div>
-
-                            <p><span id="xp">0</span> / 100 XP</p>
-                        </section>
-
-                        <!-- Achievements -->
-
-                        <section class="card">
-                            <h2>🏆 Memories</h2>
-
-                            <div class="badges">
-                                🌱 First Step 🍵 Cozy Learner 🦊 Qi's Friend
-                            </div>
-                        </section>
-
-                        <!-- Qi Cottage -->
-
-                        <section class="card">
-                            <h2>🏡 Qi's Cottage</h2>
-
-                            <div class="cottage">🌸 ☁️ 🦊 ☁️ 🌸</div>
-                        </section>
-                    </section>
-                    <!-- Profile -->
-
-                    <section
-                        class="card profile page"
-                        id="profilePage"
-                        style="display: none"
-                    >
-                        <h2>👤 My Cozy Profile</h2>
-
-                        <p>
-                            👤 Name:
-                            <span id="playerName">Student</span>
-                        </p>
-
-                        <p>
-                            🎓 Grade:
-                            <span id="playerGrade">Not Set</span>
-                        </p>
-
-                        <p>
-                            🎯 Goal:
-                            <span id="playerGoal">Not Set</span>
-                        </p>
-
-                        <p>
-                            ☁️ Study Style:
-                            <span id="playerStyle">Not Set</span>
-                        </p>
-
-                        <button id="editProfile">✏️ Edit Profile</button>
-                    </section>
-
-                    <!-- 🌱 Garden -->
-
-                    <section class="card page" id="gardenPage">
-                        <h2>🌱 My Study Garden</h2>
-
-                        <div id="subjects"></div>
-
-                        <button id="addSubject">➕ Add Subject</button>
-                    </section>
-
-                    <!-- 🏡 Subject Room -->
-
-                    <section
-                        class="card"
-                        id="subjectRoom"
-                        style="display: none"
-                    >
-                        <h2>🏡 Subject Room</h2>
-
-                        <h3 id="roomTitle"></h3>
-
-                        <div id="roomTasks"></div>
-
-                        <button id="addTask">➕ Add Task</button>
-
-                        <button id="backGarden">🌱 Back to Garden</button>
-                    </section>
-
-                    <!-- 🎯 Today's Quests -->
-
-                    <section class="card page" id="questsPage">
-                        <h2>🎯 Today's Quests</h2>
-
-                        <div id="todayTasks"></div>
-                    </section>
-                    <!-- 🐾 Companion Page -->
-
-                    <section class="card page" id="companionPage">
-                        <h2>🐾 Choose Your Companion</h2>
-
-                        <p>
-                            Every companion has a unique personality. Choose the
-                            one that will study with you.
-                        </p>
-
-                        <div id="companionList"></div>
-                    </section>
-                </div>
-                <!-- 🌸 Cozy Popup -->
-
-                <div id="popupOverlay" class="popupOverlay">
-                    <div class="popupCard">
-                        <h2 id="popupTitle">🌸 Popup</h2>
-
-                        <input
-                            type="text"
-                            id="popupInput"
-                            placeholder="Type here..."
-                        />
-
-                        <div class="popupButtons">
-                            <button id="popupSave">💾 Save</button>
-
-                            <button id="popupCancel">❌ Cancel</button>
                         </div>
+
+                        <div class="friendship">
+                            ⭐ Qi Friendship
+
+                            <div class="bar">
+                                <div class="friendBar"></div>
+                            </div>
+
+                            <p>
+                                Friendship Level:
+                                <span id="qiLevel">1</span>
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- XP -->
+
+                    <section class="card">
+                        <h2>⭐ Experience</h2>
+
+                        <div class="bar">
+                            <div class="xp"></div>
+                        </div>
+
+                        <p><span id="xp">0</span> / 100 XP</p>
+                    </section>
+
+                    <!-- Achievements -->
+
+                    <section class="card">
+                        <h2>🏆 Memories</h2>
+
+                        <div class="badges">
+                            🌱 First Step 🍵 Cozy Learner 🦊 Qi's Friend
+                        </div>
+                    </section>
+
+                    <!-- Qi Cottage -->
+
+                    <section class="card">
+                        <h2>🏡 Qi's Cottage</h2>
+
+                        <div class="cottage">🌸 ☁️ 🦊 ☁️ 🌸</div>
+                    </section>
+                </section>
+                <!-- Profile -->
+
+                <section class="card profile page" id="profilePage" style="display: none">
+                    <h2>👤 My Cozy Profile</h2>
+
+                    <p>
+                        👤 Name:
+                        <span id="playerName">Student</span>
+                    </p>
+
+                    <p>
+                        🎓 Grade:
+                        <span id="playerGrade">Not Set</span>
+                    </p>
+
+                    <p>
+                        🎯 Goal:
+                        <span id="playerGoal">Not Set</span>
+                    </p>
+
+                    <p>
+                        ☁️ Study Style:
+                        <span id="playerStyle">Not Set</span>
+                    </p>
+
+                    <button id="editProfile">✏️ Edit Profile</button>
+                </section>
+
+                <!-- 🌱 Garden -->
+
+                <section class="card page" id="gardenPage">
+                    <h2>🌱 My Study Garden</h2>
+
+                    <div id="subjects"></div>
+
+                    <button id="addSubject">➕ Add Subject</button>
+                </section>
+
+                <!-- 🏡 Subject Room -->
+
+                <section class="card" id="subjectRoom" style="display: none">
+                    <h2>🏡 Subject Room</h2>
+
+                    <h3 id="roomTitle"></h3>
+
+                    <div id="roomTasks"></div>
+
+                    <button id="addTask">➕ Add Task</button>
+
+                    <button id="backGarden">🌱 Back to Garden</button>
+                </section>
+
+                <!-- 🎯 Today's Quests -->
+
+                <section class="card page" id="questsPage">
+                    <h2>🎯 Today's Quests</h2>
+
+                    <div id="todayTasks"></div>
+                </section>
+                <!-- 🐾 Companion Page -->
+
+                <section class="card page" id="companionPage">
+                    <h2>🐾 Choose Your Companion</h2>
+
+                    <p>
+                        Every companion has a unique personality. Choose the
+                        one that will study with you.
+                    </p>
+
+                    <div id="companionList"></div>
+                </section>
+            </div>
+            <!-- 🌸 Cozy Popup -->
+
+            <div id="popupOverlay" class="popupOverlay">
+                <div class="popupCard">
+                    <h2 id="popupTitle">🌸 Popup</h2>
+
+                    <input type="text" id="popupInput" placeholder="Type here..." />
+
+                    <div class="popupButtons">
+                        <button id="popupSave">💾 Save</button>
+
+                        <button id="popupCancel">❌ Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src="script.js"></script>
-    </body>
+    <script src="script.js"></script>
+</body>
+
 </html>
