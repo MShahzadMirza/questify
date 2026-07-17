@@ -11,7 +11,7 @@ let player = {
 
     streak: 0,
 
-    happiness: 80,
+    happiness: 50,
 
     qiFriendship: 0,
 
@@ -232,16 +232,7 @@ function loadGame() {
 setInterval(saveGame, 3000);
 
 // 🌱 Study Garden System
-let subjects = JSON.parse(localStorage.getItem('questifySubjects')) || [
-    {
-        name: 'Mathematics',
-        emoji: '📐',
-        progress: 20,
-        tasks: [],
-    },
-];
-
-console.log(subjects);
+let subjects = JSON.parse(localStorage.getItem('questifySubjects')) || [];
 
 const addSubjectButton = document.getElementById('addSubject');
 const subjectBox = document.getElementById('subjects');
@@ -668,6 +659,7 @@ menuButton.addEventListener('click', function () {
 document.addEventListener('click', function (event) {
     if (!sidebar.contains(event.target) && !menuButton.contains(event.target)) {
         sidebar.classList.remove('open');
+        refreshGame();
     }
 });
 
