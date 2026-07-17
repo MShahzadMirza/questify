@@ -27,30 +27,21 @@ let profile = JSON.parse(localStorage.getItem('questifyProfile')) || {
 
     style: 'Not Set',
 };
-let companion = JSON.parse(localStorage.getItem('questifyCompanion')) || {
-    name: 'Qi',
-
-    emoji: '🦊',
-
-    personality: 'Calm',
-
-    messages: [
-        'Small steps create big adventures 🌱',
-
-        "Great job! Let's continue together 🦊",
-
-        "Don't forget to rest too ☁️",
-    ],
-};
 const companions = [
     {
         name: 'Qi',
         emoji: '🦊',
         personality: 'Calm',
         messages: [
+            "Hi! I'm Qi 🦊🌸 Ready for a cozy quest?",
             'Small steps create big adventures 🌱',
             "Great job! Let's continue together 🦊",
             "Don't forget to rest too ☁️",
+            'Small steps create big adventures 🌱',
+            'You are doing amazing! ⭐',
+            "Let's grow our knowledge garden together 🌿",
+            'Remember to take breaks and relax ☁️',
+            'Every quest completed makes us stronger 💪',
         ],
     },
 
@@ -87,8 +78,7 @@ const companions = [
         ],
     },
 ];
-let currentCompanion =
-    JSON.parse(localStorage.getItem('questifyCompanion')) || companions[0];
+let currentCompanion = JSON.parse(localStorage.getItem('questifyCompanion')) || companions[0];
 // Get elements
 
 const levelText = document.getElementById('level');
@@ -111,22 +101,6 @@ const companionEmoji = document.getElementById('companionEmoji');
 
 const companionName = document.getElementById('companionName');
 const companionList = document.getElementById('companionList');
-
-// Qi Messages
-
-const qiMessages = [
-    "Hi! I'm Qi 🦊🌸 Ready for a cozy quest?",
-
-    'Small steps create big adventures 🌱',
-
-    'You are doing amazing! ⭐',
-
-    "Let's grow our knowledge garden together 🌿",
-
-    'Remember to take breaks and relax ☁️',
-
-    'Every quest completed makes us stronger 💪',
-];
 
 // Update Screen
 
@@ -165,13 +139,7 @@ function gainXP(amount) {
         levelUp();
     }
 
-    function changeQiMessage() {
-        let random = Math.floor(
-            Math.random() * currentCompanion.messages.length,
-        );
 
-        speech.textContent = currentCompanion.messages[random];
-    }
 
     updateScreen();
 }
@@ -192,10 +160,12 @@ function levelUp() {
 
 // Qi Random Talking
 
-function changeQiMessage() {
-    let random = Math.floor(Math.random() * qiMessages.length);
+function changeCompanionMessage() {
+    let random = Math.floor(
+        Math.random() * currentCompanion.messages.length,
+    );
 
-    speech.textContent = qiMessages[random];
+    speech.textContent = currentCompanion.messages[random];
 }
 
 // Make quests clickable
@@ -261,11 +231,6 @@ function loadGame() {
 
 setInterval(saveGame, 3000);
 
-// Start Game
-
-loadGame();
-
-updateScreen();
 // 🌱 Study Garden System
 let subjects = JSON.parse(localStorage.getItem('questifySubjects')) || [
     {
@@ -289,38 +254,32 @@ function showSubjects() {
     subjects.forEach(function (subject, index) {
         subjectBox.innerHTML += `
 
-<div class="subjectCard" onclick="openSubject(${index})">
+    <div class="subjectCard" onclick="openSubject(${index})">
 
-    <div class="subjectTop">
+        <div class="subjectTop">
 
-        <div class="subjectEmoji">
-            ${subject.emoji}
+            <h3>${subject.emoji} ${subject.name}</h3>
+
+            <span>${subject.progress}%</span>
+
         </div>
 
-        <div>
+        <div class="bar">
 
-            <h3>${subject.name}</h3>
+            <div
+                class="progress"
+                style="width:${subject.progress}%">
+            </div>
 
-            <p>${getPlant(subject.progress)}</p>
+        </div>
+
+        <div class="plantStage">
+
+            ${getPlant(subject.progress)}
 
         </div>
 
     </div>
-
-    <div class="bar">
-
-        <div
-            class="progress"
-            style="width:${subject.progress}%">
-        </div>
-
-    </div>
-
-    <p class="progressText">
-        ${subject.progress}% Complete
-    </p>
-
-</div>
 
 `;
     });
@@ -609,16 +568,20 @@ function showCompanions() {
 function chooseCompanion(index) {
     currentCompanion = companions[index];
 
-    localStorage.setItem('questifyCompanion', JSON.stringify(currentCompanion));
-
-    updateCompanion();
-
-    showCompanions();
+    localStorage.setItem(
+        'questifyCompanion',
+        JSON.stringify(currentCompanion)
+    );
 
     speech.textContent =
         currentCompanion.messages[
-        Math.floor(Math.random() * currentCompanion.messages.length)
+        Math.floor(
+            Math.random() *
+            currentCompanion.messages.length
+        )
         ];
+
+    refreshGame();
 }
 
 editProfile.addEventListener('click', function () {
@@ -681,17 +644,17 @@ Press Cancel to close.`,
             return;
     }
 
-    localStorage.setItem('questifyProfile', JSON.stringify(profile));
+    localStorage.setItem(
+        'questifyProfile',
+        JSON.stringify(profile)
+    );
 
-    updateProfile();
+    speech.textContent =
+        '✨ Your profile has been updated!';
 
-    speech.textContent = '✨ Your profile has been updated!';
+    refreshGame();
 });
-updateProfile();
-updateCompanion();
-if (companionList) {
-    showCompanions();
-}
+
 // 🌸 Sidebar
 
 const menuButton = document.getElementById('menuButton');
@@ -733,12 +696,11 @@ navButtons.forEach(function (button) {
     });
 });
 
-// Show Home when Questify starts
-showPage('homePage');
+
 // 🌸 Qi talks every 10 seconds
 
 setInterval(function () {
-    changeQiMessage();
+    changeCompanionMessage();
 }, 10000);
 
 // Greeting system
@@ -763,4 +725,61 @@ function updateGreeting() {
     }
 }
 
+// 🌸 Refresh Whole Game
+
+function refreshGame() {
+
+    saveGame();
+    saveSubjects();
+
+    updateScreen();
+    updateProfile();
+    updateCompanion();
+
+    showSubjects();
+    showTodayTasks();
+
+    if (companionList) {
+        showCompanions();
+    }
+
+    // 🌸 Home Page Stats
+    const xpLeft = document.getElementById("xpLeft");
+    if (xpLeft) {
+        xpLeft.textContent = 100 - player.xp;
+    }
+
+    const subjectCount = document.getElementById("subjectCount");
+    if (subjectCount) {
+        subjectCount.textContent = subjects.length;
+    }
+
+    const todayQuestCount = document.getElementById("todayQuestCount");
+    if (todayQuestCount) {
+
+        let count = 0;
+
+        subjects.forEach(subject => {
+
+            if (subject.tasks) {
+
+                count += subject.tasks.filter(task => !task.completed).length;
+
+            }
+
+        });
+
+        todayQuestCount.textContent = count;
+    }
+
+}
+
 updateGreeting();
+
+loadGame();
+
+refreshGame();
+
+// Show Home when Questify starts
+// showPage('homePage');
+showPage("homePage");
