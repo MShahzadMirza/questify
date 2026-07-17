@@ -1,777 +1,1073 @@
 // 🦊 QUESTIFY - Qi's First Magic ✨
+// Organized Version - Single File Architecture
 
-// Player Data
+// =====================================================
+// 🌸 PLAYER DATA
+// =====================================================
 
 let player = {
-    level: 1,
+  level: 1,
 
-    xp: 0,
+  xp: 0,
 
-    coins: 0,
+  coins: 0,
 
-    streak: 0,
+  streak: 0,
 
-    happiness: 50,
+  happiness: 50,
 
-    qiFriendship: 0,
+  qiFriendship: 0,
 
-    qiLevel: 1,
+  qiLevel: 1,
 };
 
-let profile = JSON.parse(localStorage.getItem('questifyProfile')) || {
-    name: 'Student',
+// =====================================================
+// 🌸 PROFILE DATA
+// =====================================================
 
-    grade: 'Not Set',
+let profile = JSON.parse(localStorage.getItem("questifyProfile")) || {
+  name: "Student",
 
-    goal: 'Not Set',
+  grade: "Not Set",
 
-    style: 'Not Set',
+  goal: "Not Set",
+
+  style: "Not Set",
 };
+
+// =====================================================
+// 🌸 COMPANION SYSTEM
+// =====================================================
+
 const companions = [
-    {
-        name: 'Qi',
-        emoji: '🦊',
-        personality: 'Calm',
-        messages: [
-            "Hi! I'm Qi 🦊🌸 Ready for a cozy quest?",
-            'Small steps create big adventures 🌱',
-            "Great job! Let's continue together 🦊",
-            "Don't forget to rest too ☁️",
-            'Small steps create big adventures 🌱',
-            'You are doing amazing! ⭐',
-            "Let's grow our knowledge garden together 🌿",
-            'Remember to take breaks and relax ☁️',
-            'Every quest completed makes us stronger 💪',
-        ],
-    },
+  {
+    name: "Qi",
 
-    {
-        name: 'Mochi',
-        emoji: '🐱',
-        personality: 'Sleepy',
-        messages: [
-            "Let's study a little, then have a cozy break 😺",
-            'Slow progress is still progress 🌸',
-            'Curl up with a good book today 📖',
-        ],
-    },
+    emoji: "🦊",
 
-    {
-        name: 'Biscuit',
-        emoji: '🐶',
-        personality: 'Energetic',
-        messages: [
-            "Let's do this together! ⭐",
-            "You're doing pawsome! 🐶",
-            'One more quest! I believe in you!',
-        ],
-    },
+    personality: "Calm",
 
-    {
-        name: 'Clover',
-        emoji: '🐰',
-        personality: 'Gentle',
-        messages: [
-            "Let's hop through today's study gently 🌼",
-            'Every page you read helps you grow 🌱',
-            "Take your time. You're doing great 🐰",
-        ],
-    },
+    messages: [
+      "Small steps create big adventures 🌱",
+
+      "Great job! Let's continue together 🦊",
+
+      "Don't forget to rest too ☁️",
+
+      "Hi! Ready for a cozy quest? 🦊🌸",
+
+      "Small steps create big adventures 🌱",
+
+      "You are doing amazing! ⭐",
+
+      "Let's grow our knowledge garden together 🌿",
+
+      "Remember to take breaks ☁️",
+
+      "Every quest completed makes us stronger 💪",
+    ],
+  },
+
+  {
+    name: "Mochi",
+
+    emoji: "🐱",
+
+    personality: "Curious",
+
+    messages: [
+      "Let's study a little, then explore together 😺",
+
+      "Every page you read is a new discovery 🌸",
+
+      "I wonder what we will learn today? 📖",
+    ],
+  },
+
+  {
+    name: "Biscuit",
+
+    emoji: "🐶",
+
+    personality: "Energetic",
+
+    messages: [
+      "Let's do this together! ⭐",
+
+      "You're doing pawsome! 🐶",
+
+      "One more quest! I believe in you!",
+    ],
+  },
+
+  {
+    name: "Clover",
+
+    emoji: "🐰",
+
+    personality: "Gentle",
+
+    messages: [
+      "Let's hop through today's study gently 🌼",
+
+      "Every page helps you grow 🌱",
+
+      "Take your time. You're doing great 🐰",
+    ],
+  },
 ];
-let currentCompanion = JSON.parse(localStorage.getItem('questifyCompanion')) || companions[0];
-// Get elements
 
-const levelText = document.getElementById('level');
+let currentCompanion =
+  JSON.parse(localStorage.getItem("questifyCompanion")) || companions[0];
 
-const xpText = document.getElementById('xp');
+// =====================================================
+// 🌱 STUDY GARDEN DATA
+// =====================================================
 
-const coinsText = document.getElementById('coins');
+let subjects = JSON.parse(localStorage.getItem("questifySubjects")) || [];
 
-const streakText = document.getElementById('streak');
+// =====================================================
+// 🌸 TEMP VARIABLES
+// =====================================================
 
-const xpBar = document.querySelector('.xp');
-const happinessBar = document.querySelector('.happiness');
-const todayTasks = document.getElementById('todayTasks');
-
-const friendBar = document.querySelector('.friendBar');
-
-const qiLevelText = document.getElementById('qiLevel');
-const speech = document.querySelector('.speech');
-const companionEmoji = document.getElementById('companionEmoji');
-
-const companionName = document.getElementById('companionName');
-const companionList = document.getElementById('companionList');
-
-// Update Screen
-
-function updateScreen() {
-    levelText.textContent = player.level;
-
-    xpText.textContent = player.xp;
-
-    coinsText.textContent = player.coins;
-
-    streakText.textContent = player.streak;
-
-    xpBar.style.width = player.xp + '%';
-
-    happinessBar.style.width = player.happiness + '%';
-
-    friendBar.style.width = player.qiFriendship + '%';
-
-    qiLevelText.textContent = player.qiLevel;
-
-    document.getElementById('xpLeft').textContent = 100 - player.xp;
-
-
-}
-// Add XP
-
-function gainXP(amount) {
-    player.xp += amount;
-
-    player.coins += Math.floor(amount / 2);
-
-    player.happiness += 2;
-    increaseQiFriendship();
-
-    if (player.xp >= 100) {
-        levelUp();
-    }
-
-
-
-    updateScreen();
-}
-
-// Level Up
-
-function levelUp() {
-    player.level++;
-
-    player.xp = 0;
-
-    player.coins += 100;
-
-    player.happiness = 100;
-
-    speech.textContent = '🎉 WOW! We leveled up together! 🦊✨';
-}
-
-// Qi Random Talking
-
-function changeCompanionMessage() {
-    let random = Math.floor(
-        Math.random() * currentCompanion.messages.length,
-    );
-
-    speech.textContent = currentCompanion.messages[random];
-}
-
-// Make quests clickable
-
-const quests = document.querySelectorAll('.quest');
-
-quests.forEach(function (quest) {
-    let originalText = quest.textContent;
-
-    quest.addEventListener('click', function () {
-        if (!quest.classList.contains('done')) {
-            quest.classList.add('done');
-
-            quest.textContent = '✅ ' + originalText;
-
-            gainXP(20);
-            growSubject();
-        } else {
-            quest.classList.remove('done');
-
-            quest.textContent = originalText;
-
-            player.xp -= 20;
-
-            player.coins -= 10;
-
-            if (player.xp < 0) {
-                player.xp = 0;
-            }
-
-            if (player.coins < 0) {
-                player.coins = 0;
-            }
-
-            speech.textContent = "Let's try again! 🌱🦊";
-
-            updateScreen();
-        }
-    });
-});
-
-// Save Data
-
-function saveGame() {
-    localStorage.setItem(
-        'questifySave',
-
-        JSON.stringify(player),
-    );
-}
-
-// Load Data
-
-function loadGame() {
-    let saved = localStorage.getItem('questifySave');
-
-    if (saved) {
-        player = JSON.parse(saved);
-    }
-}
-
-// Save every few seconds
-
-setInterval(saveGame, 3000);
-
-// 🌱 Study Garden System
-let subjects = JSON.parse(localStorage.getItem('questifySubjects')) || [];
-
-const addSubjectButton = document.getElementById('addSubject');
-const subjectBox = document.getElementById('subjects');
-
-function showSubjects() {
-    if (!subjectBox) return;
-
-    subjectBox.innerHTML = '';
-
-    subjects.forEach(function (subject, index) {
-        subjectBox.innerHTML += `
-
-    <div class="subjectCard" onclick="openSubject(${index})">
-
-        <div class="subjectTop">
-
-            <h3>${subject.emoji} ${subject.name}</h3>
-
-            <span>${subject.progress}%</span>
-
-        </div>
-
-        <div class="bar">
-
-            <div
-                class="progress"
-                style="width:${subject.progress}%">
-            </div>
-
-        </div>
-
-        <div class="plantStage">
-
-            ${getPlant(subject.progress)}
-
-        </div>
-
-    </div>
-
-`;
-    });
-
-    saveSubjects();
-}
-if (addSubjectButton) {
-    addSubjectButton.addEventListener('click', function () {
-        let name = prompt('What subject do you want to grow? 📚');
-
-        if (name) {
-            let emoji = prompt('Choose an emoji 🌸');
-
-            if (!emoji) {
-                emoji = '📚';
-            }
-
-            subjects.push({
-                name: name,
-                emoji: emoji,
-                progress: 0,
-            });
-
-            showSubjects();
-        }
-    });
-}
-// 🌱 Grow Subject
-
-function growSubject() {
-    if (subjects.length === 0) {
-        return;
-    }
-
-    let randomSubject = Math.floor(Math.random() * subjects.length);
-
-    subjects[randomSubject].progress += 10;
-
-    if (subjects[randomSubject].progress > 100) {
-        subjects[randomSubject].progress = 100;
-    }
-
-    showSubjects();
-}
-function getPlant(progress) {
-    if (progress < 25) {
-        return '🌱 Seedling - ' + progress + '%';
-    } else if (progress < 50) {
-        return '🌿 Small Plant - ' + progress + '%';
-    } else if (progress < 75) {
-        return '🌸 Flower - ' + progress + '%';
-    } else if (progress < 100) {
-        return '🌳 Growing Tree - ' + progress + '%';
-    } else {
-        return '🌳✨ Knowledge Tree Complete!';
-    }
-}
-function saveSubjects() {
-    localStorage.setItem('questifySubjects', JSON.stringify(subjects));
-}
-showSubjects();
-function increaseQiFriendship() {
-    player.qiFriendship += 5;
-
-    console.log('Qi Friendship:', player.qiFriendship);
-
-    if (player.qiFriendship >= 100) {
-        player.qiFriendship = 0;
-
-        player.qiLevel++;
-
-        speech.textContent =
-            '🎉 Qi friendship level up! We are closer now! 🦊💖';
-    }
-}
 let currentSubject = null;
 
-const subjectRoom = document.getElementById('subjectRoom');
+// =====================================================
+// 🌸 DOM ELEMENTS
+// =====================================================
 
-const roomTitle = document.getElementById('roomTitle');
+// Player Stats
 
-const roomTasks = document.getElementById('roomTasks');
-function openSubject(index) {
-    currentSubject = index;
+const levelText = document.getElementById("level");
 
-    let subject = subjects[index];
+const xpText = document.getElementById("xp");
 
-    subjectRoom.style.display = 'block';
+const coinsText = document.getElementById("coins");
 
-    roomTitle.innerHTML = subject.emoji + ' ' + subject.name;
+const streakText = document.getElementById("streak");
 
-    showTasks();
-    showTodayTasks();
+// Bars
 
-    window.scrollTo({
-        top: subjectRoom.offsetTop,
+const xpBar = document.querySelector(".xp");
 
-        behavior: 'smooth',
-    });
+const happinessBar = document.querySelector(".happiness");
+
+const friendBar = document.querySelector(".friendBar");
+
+// Qi
+
+const qiLevelText = document.getElementById("qiLevel");
+
+const speech = document.querySelector(".speech");
+
+const companionEmoji = document.getElementById("companionEmoji");
+
+const companionName = document.getElementById("companionName");
+
+const companionList = document.getElementById("companionList");
+
+// Home Stats
+
+const xpLeft = document.getElementById("xpLeft");
+
+const subjectCount = document.getElementById("subjectCount");
+
+const todayQuestCount = document.getElementById("todayQuestCount");
+
+// Garden
+
+const subjectBox = document.getElementById("subjects");
+
+const addSubjectButton = document.getElementById("addSubject");
+
+// Subject Room
+
+const subjectRoom = document.getElementById("subjectRoom");
+
+const roomTitle = document.getElementById("roomTitle");
+
+const roomTasks = document.getElementById("roomTasks");
+
+const addTaskButton = document.getElementById("addTask");
+
+const backGarden = document.getElementById("backGarden");
+
+// Profile
+
+const playerName = document.getElementById("playerName");
+
+const playerGrade = document.getElementById("playerGrade");
+
+const playerGoal = document.getElementById("playerGoal");
+
+const playerStyle = document.getElementById("playerStyle");
+
+const editProfile = document.getElementById("editProfile");
+
+// Navigation
+
+const menuButton = document.getElementById("menuButton");
+
+const sidebar = document.getElementById("sidebar");
+
+const navButtons = document.querySelectorAll(".navButton[data-page]");
+
+const pages = document.querySelectorAll(".page");
+
+// =====================================================
+// 🌸 SAVE / LOAD SYSTEM
+// =====================================================
+
+function saveGame() {
+  localStorage.setItem(
+    "questifySave",
+
+    JSON.stringify(player),
+  );
 }
-document.getElementById('backGarden').addEventListener('click', function () {
-    subjectRoom.style.display = 'none';
-});
-function showTasks() {
-    roomTasks.innerHTML = '';
 
-    let tasks = subjects[currentSubject].tasks || [];
+function loadGame() {
+  const saved = localStorage.getItem("questifySave");
 
-    if (tasks.length === 0) {
-        roomTasks.innerHTML = '🌱 No quests yet';
+  if (saved) {
+    player = JSON.parse(saved);
+  }
+}
+
+function saveSubjects() {
+  localStorage.setItem(
+    "questifySubjects",
+
+    JSON.stringify(subjects),
+  );
+}
+
+function loadSubjects() {
+  const saved = localStorage.getItem("questifySubjects");
+
+  if (saved) {
+    subjects = JSON.parse(saved);
+  }
+}
+
+// =====================================================
+// 🌸 UPDATE FUNCTIONS
+// =====================================================
+
+// Update Player Stats
+
+function updateScreen() {
+  if (levelText) {
+    levelText.textContent = player.level;
+  }
+
+  if (xpText) {
+    xpText.textContent = player.xp;
+  }
+
+  if (coinsText) {
+    coinsText.textContent = player.coins;
+  }
+
+  if (streakText) {
+    streakText.textContent = player.streak;
+  }
+
+  if (xpBar) {
+    xpBar.style.width = player.xp + "%";
+  }
+
+  if (happinessBar) {
+    happinessBar.style.width = player.happiness + "%";
+  }
+
+  if (friendBar) {
+    friendBar.style.width = player.qiFriendship + "%";
+  }
+
+  if (qiLevelText) {
+    qiLevelText.textContent = player.qiLevel;
+  }
+
+  if (xpLeft) {
+    xpLeft.textContent = 100 - player.xp;
+  }
+
+  if (subjectCount) {
+    subjectCount.textContent = subjects.length;
+  }
+
+  if (todayQuestCount) {
+    let count = 0;
+
+    subjects.forEach(function (subject) {
+      if (subject.tasks) {
+        subject.tasks.forEach(function (task) {
+          if (!task.completed) {
+            count++;
+          }
+        });
+      }
+    });
+
+    todayQuestCount.textContent = count;
+  }
+}
+
+// =====================================================
+// 🌸 PLAYER FUNCTIONS
+// =====================================================
+
+// Gain XP
+
+function gainXP(amount) {
+  player.xp += amount;
+
+  player.coins += Math.floor(amount / 2);
+
+  player.happiness += 2;
+
+  if (player.happiness > 100) {
+    player.happiness = 100;
+  }
+
+  increaseQiFriendship();
+
+  if (player.xp >= 100) {
+    levelUp();
+  }
+  refreshGame();
+}
+
+// =====================================================
+// ⭐ LEVEL UP
+// =====================================================
+
+function levelUp() {
+  player.level++;
+
+  player.xp = 0;
+
+  player.coins += 100;
+
+  player.happiness = 100;
+
+  if (speech) {
+    speech.textContent = "🎉 WOW! We leveled up together! ✨";
+  }
+}
+
+// =====================================================
+// 💖 QI FRIENDSHIP SYSTEM
+// =====================================================
+
+function increaseQiFriendship() {
+  player.qiFriendship += 5;
+
+  if (player.qiFriendship >= 100) {
+    player.qiFriendship = 0;
+
+    player.qiLevel++;
+
+    if (speech) {
+      speech.textContent = "🎉 Friendship level up! We are closer now! 🦊💖";
     }
+  }
+}
 
-    tasks.forEach(function (task) {
-        roomTasks.innerHTML += `
+// =====================================================
+// 🦊 COMPANION RANDOM TALK
+// =====================================================
 
-        <div class="quest">
+function changeCompanionMessage() {
+  if (!speech) {
+    return;
+  }
 
-        ${task.completed ? '✅' : '☐'}
+  let messages = currentCompanion.messages;
 
-        ${task.text}
+  let random = Math.floor(Math.random() * messages.length);
+
+  speech.textContent = messages[random];
+}
+
+// =====================================================
+// 🌱 GARDEN SYSTEM
+// =====================================================
+
+// Show All Subjects
+
+function showSubjects() {
+  if (!subjectBox) {
+    return;
+  }
+
+  subjectBox.innerHTML = "";
+
+  subjects.forEach(function (subject, index) {
+    subjectBox.innerHTML += `
+
+        <div class="subjectCard" onclick="openSubject(${index})">
+
+
+            <div class="subjectTop">
+
+
+                <h3>
+                ${subject.emoji}
+                ${subject.name}
+                </h3>
+
+
+                <span>
+                ${subject.progress}%
+                </span>
+
+
+            </div>
+
+
+
+            <div class="bar">
+
+                <div 
+                class="progress"
+                style="width:${subject.progress}%">
+
+                </div>
+
+            </div>
+
+
+
+            <div class="plantStage">
+
+                ${getPlant(subject.progress)}
+
+            </div>
+
 
         </div>
 
         `;
-    });
-}
-// ➕ Add Task System
+  });
 
-const addTaskButton = document.getElementById('addTask');
+  saveSubjects();
+}
+
+// =====================================================
+// 🌱 PLANT EVOLUTION
+// =====================================================
+
+function getPlant(progress) {
+  if (progress < 25) {
+    return "🌱 Seedling - " + progress + "%";
+  } else if (progress < 50) {
+    return "🌿 Small Plant - " + progress + "%";
+  } else if (progress < 75) {
+    return "🌸 Flower - " + progress + "%";
+  } else if (progress < 100) {
+    return "🌳 Growing Tree - " + progress + "%";
+  } else {
+    return "🌳✨ Knowledge Tree Complete!";
+  }
+}
+
+// =====================================================
+// 🌸 GROW SUBJECT
+// =====================================================
+
+function growSubject() {
+  if (subjects.length === 0) {
+    return;
+  }
+
+  let randomSubject = Math.floor(Math.random() * subjects.length);
+
+  subjects[randomSubject].progress += 10;
+
+  if (subjects[randomSubject].progress > 100) {
+    subjects[randomSubject].progress = 100;
+  }
+
+  refreshGame();
+}
+
+// =====================================================
+// ➕ ADD SUBJECT
+// =====================================================
+
+if (addSubjectButton) {
+  addSubjectButton.addEventListener("click", function () {
+    let name = prompt("What subject do you want to grow? 📚");
+
+    if (name) {
+      let emoji = prompt("Choose an emoji 🌸");
+
+      if (!emoji) {
+        emoji = "📚";
+      }
+
+      subjects.push({
+        name: name,
+
+        emoji: emoji,
+
+        progress: 0,
+
+        tasks: [],
+      });
+
+      refreshGame();
+    }
+  });
+}
+
+// =====================================================
+// 🏡 SUBJECT ROOM SYSTEM
+// =====================================================
+
+function openSubject(index) {
+  currentSubject = index;
+
+  let subject = subjects[index];
+
+  if (subjectRoom) {
+    subjectRoom.style.display = "block";
+  }
+
+  if (roomTitle) {
+    roomTitle.textContent = subject.emoji + " " + subject.name;
+  }
+
+  showTasks();
+
+  showTodayTasks();
+
+  window.scrollTo({
+    top: subjectRoom.offsetTop,
+
+    behavior: "smooth",
+  });
+}
+
+// =====================================================
+// 🌱 BACK TO GARDEN
+// =====================================================
+
+if (backGarden) {
+  backGarden.addEventListener("click", function () {
+    if (subjectRoom) {
+      subjectRoom.style.display = "none";
+    }
+  });
+}
+
+// =====================================================
+// 📚 SHOW SUBJECT TASKS
+// =====================================================
+
+function showTasks() {
+  if (!roomTasks) {
+    return;
+  }
+
+  roomTasks.innerHTML = "";
+
+  if (currentSubject === null) {
+    return;
+  }
+
+  let tasks = subjects[currentSubject].tasks || [];
+
+  if (tasks.length === 0) {
+    roomTasks.innerHTML = "🌱 No quests yet";
+
+    return;
+  }
+
+  tasks.forEach(function (task) {
+    roomTasks.innerHTML += `
+
+
+        <div class="quest">
+
+
+            ${task.completed ? "✅" : "☐"}
+
+            ${task.text}
+
+
+        </div>
+
+
+        `;
+  });
+}
+
+// =====================================================
+// ➕ ADD TASK
+// =====================================================
 
 if (addTaskButton) {
-    addTaskButton.addEventListener('click', function () {
-        if (currentSubject === null) {
-            return;
-        }
+  addTaskButton.addEventListener("click", function () {
+    if (currentSubject === null) {
+      return;
+    }
 
-        let taskName = prompt('What quest do you want to add? 🎯');
+    let taskName = prompt("What quest do you want to add? 🎯");
 
-        if (taskName) {
-            if (!subjects[currentSubject].tasks) {
-                subjects[currentSubject].tasks = [];
-            }
+    if (taskName) {
+      if (!subjects[currentSubject].tasks) {
+        subjects[currentSubject].tasks = [];
+      }
 
-            subjects[currentSubject].tasks.push({
-                text: taskName,
-                completed: false,
-            });
+      subjects[currentSubject].tasks.push({
+        text: taskName,
 
-            saveSubjects();
-            showTasks();
+        completed: false,
+      });
 
-            speech.textContent = "New quest added! Let's do it! 🦊✨";
-        }
-    });
+      refreshGame();
+
+      if (speech) {
+        speech.textContent = "New quest added! Let's do it! 🦊✨";
+      }
+    }
+  });
 }
-function showTodayTasks() {
-    todayTasks.innerHTML = '';
 
-    subjects.forEach(function (subject, subjectIndex) {
-        if (subject.tasks) {
-            subject.tasks.forEach(function (task, taskIndex) {
-                todayTasks.innerHTML += `
+// =====================================================
+// 🎯 TODAY'S QUEST LIST
+// =====================================================
+
+function showTodayTasks() {
+  if (!todayTasks) {
+    return;
+  }
+
+  todayTasks.innerHTML = "";
+
+  subjects.forEach(function (subject, subjectIndex) {
+    if (subject.tasks) {
+      subject.tasks.forEach(function (task, taskIndex) {
+        todayTasks.innerHTML += `
 
 
                 <div class="quest"
-                onclick="completeTask(${subjectIndex}, ${taskIndex})">
+                onclick="completeTask(${subjectIndex},${taskIndex})">
 
 
-                ${task.completed ? '✅' : '☐'}
+                    ${task.completed ? "✅" : "☐"}
 
-                ${subject.emoji}
+                    ${subject.emoji}
 
-                ${task.text}
+                    ${task.text}
 
 
                 </div>
 
 
                 `;
-            });
-        }
-    });
+      });
+    }
+  });
 }
 
-// Complete Study Quest
+// =====================================================
+// 🎯 COMPLETE QUEST SYSTEM
+// =====================================================
 
 function completeTask(subjectIndex, taskIndex) {
-    let task = subjects[subjectIndex].tasks[taskIndex];
+  let task = subjects[subjectIndex].tasks[taskIndex];
 
-    if (!task.completed) {
-        task.completed = true;
+  if (!task.completed) {
+    // Mark complete
 
-        // Rewards
-        player.xp += 20;
+    task.completed = true;
 
-        player.coins += 10;
+    // ⭐ Rewards
+    gainXP(20);
 
-        increaseQiFriendship();
-        subjects[subjectIndex].progress += 5;
+    // 🌱 Subject Growth
 
-        if (subjects[subjectIndex].progress > 100) {
-            subjects[subjectIndex].progress = 100;
-        }
+    subjects[subjectIndex].progress += 5;
 
-        // Level system
-        if (player.xp >= 100) {
-            player.level++;
-
-            player.xp = 0;
-
-            player.coins += 100;
-
-            speech.textContent = '🎉 Level up! Qi is proud of you 🦊✨';
-        } else {
-            speech.textContent = 'Yay! Quest completed! Great job 🌸🦊';
-        }
+    if (subjects[subjectIndex].progress > 100) {
+      subjects[subjectIndex].progress = 100;
     } else {
-        let undoQuest = confirm(
-            "🌸 Do you want to mark this quest as incomplete?\n\nYour XP, Coins, Friendship, and Subject Growth will stay because you've already earned them. 🦊",
-        );
-
-        if (undoQuest) {
-            task.completed = false;
-
-            speech.textContent =
-                "No worries! You can complete it again whenever you're ready. 🌱";
-        }
+      if (speech) {
+        speech.textContent = "Yay! Quest completed! Great job 🌸🦊";
+      }
     }
-
-    saveGame();
-
-    saveSubjects();
-
-    showTasks();
-
-    showTodayTasks();
-
-    updateScreen();
-}
-
-// Profile starts here
-
-const playerName = document.getElementById('playerName');
-
-const playerGrade = document.getElementById('playerGrade');
-
-const playerGoal = document.getElementById('playerGoal');
-
-const playerStyle = document.getElementById('playerStyle');
-
-const editProfile = document.getElementById('editProfile');
-function updateProfile() {
-    playerName.textContent = profile.name;
-
-    playerGrade.textContent = profile.grade;
-
-    playerGoal.textContent = profile.goal;
-
-    playerStyle.textContent = profile.style;
-}
-function updateCompanion() {
-    companionEmoji.textContent = currentCompanion.emoji;
-
-    companionName.textContent = currentCompanion.name;
-}
-
-function showCompanions() {
-    companionList.innerHTML = '';
-
-    companions.forEach(function (companion, index) {
-        companionList.innerHTML += `
-
-        <div class="companionCard ${currentCompanion.name === companion.name ? 'selected' : ''}"
-
-        onclick="chooseCompanion(${index})">
-
-            <h3>${companion.emoji} ${companion.name}</h3>
-
-            <p>${companion.personality}</p>
-
-        </div>
-
-        `;
-    });
-}
-function chooseCompanion(index) {
-    currentCompanion = companions[index];
-
-    localStorage.setItem(
-        'questifyCompanion',
-        JSON.stringify(currentCompanion)
+  } else {
+    let undo = confirm(
+      "🌸 Mark this quest incomplete?\n\n" + "Your rewards will stay saved.",
     );
 
-    speech.textContent =
-        currentCompanion.messages[
-        Math.floor(
-            Math.random() *
-            currentCompanion.messages.length
-        )
-        ];
+    if (undo) {
+      task.completed = false;
 
-    refreshGame();
+      if (speech) {
+        speech.textContent = "No worries! Try again whenever you're ready 🌱";
+      }
+    }
+  }
+
+  refreshGame();
 }
 
-editProfile.addEventListener('click', function () {
+// =====================================================
+// 👤 PROFILE SYSTEM
+// =====================================================
+
+function updateProfile() {
+  if (playerName) {
+    playerName.textContent = profile.name;
+  }
+
+  if (playerGrade) {
+    playerGrade.textContent = profile.grade;
+  }
+
+  if (playerGoal) {
+    playerGoal.textContent = profile.goal;
+  }
+
+  if (playerStyle) {
+    playerStyle.textContent = profile.style;
+  }
+}
+
+function saveProfile() {
+  localStorage.setItem(
+    "questifyProfile",
+
+    JSON.stringify(profile),
+  );
+}
+
+// =====================================================
+// ✏️ EDIT PROFILE
+// =====================================================
+
+if (editProfile) {
+  editProfile.addEventListener("click", function () {
     let choice = prompt(
-        `🦊 What would you like to edit?
+      `🌸 What would you like to edit?
 
 1. 👤 Name
 2. 🎓 Grade
 3. 🎯 Goal
 4. ☁️ Study Style
 
-Type 1, 2, 3 or 4.
-Press Cancel to close.`,
+Enter 1,2,3 or 4`,
     );
 
     if (choice === null) {
-        return;
+      return;
     }
 
     switch (choice) {
-        case '1':
-            let newName = prompt('👤 Enter your name:', profile.name);
+      case "1":
+        let name = prompt("Enter your name:", profile.name);
 
-            if (newName !== null && newName !== '') {
-                profile.name = newName;
-            }
+        if (name) {
+          profile.name = name;
+        }
 
-            break;
+        break;
 
-        case '2':
-            let newGrade = prompt('🎓 Enter your grade:', profile.grade);
+      case "2":
+        let grade = prompt("Enter your grade:", profile.grade);
 
-            if (newGrade !== null && newGrade !== '') {
-                profile.grade = newGrade;
-            }
+        if (grade) {
+          profile.grade = grade;
+        }
 
-            break;
+        break;
 
-        case '3':
-            let newGoal = prompt('🎯 Enter your study goal:', profile.goal);
+      case "3":
+        let goal = prompt("Enter your goal:", profile.goal);
 
-            if (newGoal !== null && newGoal !== '') {
-                profile.goal = newGoal;
-            }
+        if (goal) {
+          profile.goal = goal;
+        }
 
-            break;
+        break;
 
-        case '4':
-            let newStyle = prompt('☁️ Enter your study style:', profile.style);
+      case "4":
+        let style = prompt("Enter your study style:", profile.style);
 
-            if (newStyle !== null && newStyle !== '') {
-                profile.style = newStyle;
-            }
+        if (style) {
+          profile.style = style;
+        }
 
-            break;
+        break;
 
-        default:
-            alert('🌸 Please choose 1, 2, 3 or 4.');
+      default:
+        alert("Please choose 1-4");
 
-            return;
+        return;
     }
 
-    localStorage.setItem(
-        'questifyProfile',
-        JSON.stringify(profile)
-    );
-
-    speech.textContent =
-        '✨ Your profile has been updated!';
+    saveProfile();
 
     refreshGame();
-});
 
-// 🌸 Sidebar
-
-const menuButton = document.getElementById('menuButton');
-const sidebar = document.getElementById('sidebar');
-
-menuButton.addEventListener('click', function () {
-    sidebar.classList.toggle('open');
-});
-// 🌸 Close sidebar when clicking outside
-
-document.addEventListener('click', function (event) {
-    if (!sidebar.contains(event.target) && !menuButton.contains(event.target)) {
-        sidebar.classList.remove('open');
-        refreshGame();
+    if (speech) {
+      speech.textContent = "✨ Profile updated!";
     }
+  });
+}
+
+// =====================================================
+// 🐾 COMPANION SYSTEM
+// =====================================================
+
+function updateCompanion() {
+  if (companionEmoji) {
+    companionEmoji.textContent = currentCompanion.emoji;
+  }
+
+  if (companionName) {
+    companionName.textContent = currentCompanion.name;
+  }
+}
+
+function showCompanions() {
+  if (!companionList) {
+    return;
+  }
+
+  companionList.innerHTML = "";
+
+  companions.forEach(function (companion, index) {
+    companionList.innerHTML += `
+
+
+<div class="companionCard 
+${currentCompanion.name === companion.name ? "selected" : ""}"
+
+onclick="chooseCompanion(${index})">
+
+
+<h3>
+
+${companion.emoji}
+
+${companion.name}
+
+</h3>
+
+
+<p>
+
+${companion.personality}
+
+</p>
+
+
+</div>
+
+
+`;
+  });
+}
+
+function chooseCompanion(index) {
+  currentCompanion = companions[index];
+
+  localStorage.setItem(
+    "questifyCompanion",
+
+    JSON.stringify(currentCompanion),
+  );
+
+  updateCompanion();
+
+  showCompanions();
+
+  if (speech) {
+    speech.textContent =
+      currentCompanion.messages[
+        Math.floor(Math.random() * currentCompanion.messages.length)
+      ];
+  }
+
+  refreshGame();
+}
+
+// =====================================================
+// 🌸 SIDEBAR SYSTEM
+// =====================================================
+
+if (menuButton && sidebar) {
+  menuButton.addEventListener("click", function () {
+    sidebar.classList.toggle("open");
+  });
+}
+
+// Close sidebar outside click
+
+document.addEventListener("click", function (event) {
+  if (
+    sidebar &&
+    menuButton &&
+    !sidebar.contains(event.target) &&
+    !menuButton.contains(event.target)
+  ) {
+    sidebar.classList.remove("open");
+  }
 });
 
-// 🌸 Page Navigation
-
-const navButtons = document.querySelectorAll('.navButton[data-page]');
-const pages = document.querySelectorAll('.page');
+// =====================================================
+// 🌸 PAGE NAVIGATION
+// =====================================================
 
 function showPage(pageId) {
-    pages.forEach(function (page) {
-        page.style.display = 'none';
-    });
+  pages.forEach(function (page) {
+    page.style.display = "none";
+  });
 
-    const page = document.getElementById(pageId);
+  let page = document.getElementById(pageId);
 
-    if (page) {
-        page.style.display = 'block';
-    }
+  if (page) {
+    page.style.display = "block";
+  }
 
-    sidebar.classList.remove('open');
+  if (sidebar) {
+    sidebar.classList.remove("open");
+  }
 }
 
 navButtons.forEach(function (button) {
-    button.addEventListener('click', function () {
-        showPage(button.dataset.page);
-    });
+  button.addEventListener("click", function () {
+    let page = button.dataset.page;
+
+    if (page) {
+      showPage(page);
+    }
+  });
 });
 
-
-// 🌸 Qi talks every 10 seconds
+// =====================================================
+// 🌸 AUTO SAVE
+// =====================================================
 
 setInterval(function () {
-    changeCompanionMessage();
-}, 10000);
+  saveGame();
 
-// Greeting system
+  saveSubjects();
+}, 3000);
+
+// =====================================================
+// Greeting System
+// =====================================================
 
 function updateGreeting() {
-    const hour = new Date().getHours();
+  let hour = new Date().getHours();
 
-    let greeting = "Welcome back!";
+  let greeting = "Welcome back!";
 
-    if (hour < 12) {
-        greeting = "🌅 Good Morning!";
-    } else if (hour < 18) {
-        greeting = "☀️ Good Afternoon!";
-    } else {
-        greeting = "🌙 Good Evening!";
-    }
+  if (hour < 12) {
+    greeting = "🌅 Good Morning!";
+  } else if (hour < 18) {
+    greeting = "☀️ Good Afternoon!";
+  } else {
+    greeting = "🌙 Good Evening!";
+  }
 
-    const heading = document.querySelector(".welcomeCard h2");
+  let heading = document.querySelector(".welcomeCard h2");
 
-    if (heading) {
-        heading.textContent = greeting;
-    }
+  if (heading) {
+    heading.textContent = greeting;
+  }
 }
 
-// 🌸 Refresh Whole Game
-
-function refreshGame() {
-
-    saveGame();
-    saveSubjects();
-
-    updateScreen();
-    updateProfile();
-    updateCompanion();
-
-    showSubjects();
-    showTodayTasks();
-
-    if (companionList) {
-        showCompanions();
-    }
-
-    // 🌸 Home Page Stats
-    const xpLeft = document.getElementById("xpLeft");
-    if (xpLeft) {
-        xpLeft.textContent = 100 - player.xp;
-    }
-
-    const subjectCount = document.getElementById("subjectCount");
-    if (subjectCount) {
-        subjectCount.textContent = subjects.length;
-    }
-
-    const todayQuestCount = document.getElementById("todayQuestCount");
-    if (todayQuestCount) {
-
-        let count = 0;
-
-        subjects.forEach(subject => {
-
-            if (subject.tasks) {
-
-                count += subject.tasks.filter(task => !task.completed).length;
-
-            }
-
-        });
-
-        todayQuestCount.textContent = count;
-    }
-
-}
-
-updateGreeting();
+// =====================================================
+// 🦊 QUESTIFY START
+// =====================================================
 
 loadGame();
 
+loadSubjects();
+
 refreshGame();
 
-// Show Home when Questify starts
-// showPage('homePage');
+updateGreeting();
+
 showPage("homePage");
+
+// Qi talks every 10 seconds
+setInterval(function () {
+  changeCompanionMessage();
+}, 10000);
+
+// =====================================================
+// 🌸 MASTER REFRESH FUNCTION
+// =====================================================
+
+function refreshGame() {
+  // Save everything
+
+  saveGame();
+
+  saveSubjects();
+
+  saveProfile();
+
+  // Update player UI
+
+  updateScreen();
+
+  // Update profile
+
+  updateProfile();
+
+  // Update companion
+
+  updateCompanion();
+
+  // Update garden
+
+  showSubjects();
+
+  // Update quests
+
+  showTodayTasks();
+
+  // Update companion choices
+
+  if (companionList) {
+    showCompanions();
+  }
+
+  // Update Home Adventure Stats
+
+  let xpLeft = document.getElementById("xpLeft");
+
+  if (xpLeft) {
+    xpLeft.textContent = 100 - player.xp;
+  }
+
+  let subjectCount = document.getElementById("subjectCount");
+
+  if (subjectCount) {
+    subjectCount.textContent = subjects.length;
+  }
+
+  let todayQuestCount = document.getElementById("todayQuestCount");
+
+  if (todayQuestCount) {
+    let count = 0;
+
+    subjects.forEach(function (subject) {
+      if (subject.tasks) {
+        count += subject.tasks.filter((task) => !task.completed).length;
+      }
+    });
+
+    todayQuestCount.textContent = count;
+  }
+}

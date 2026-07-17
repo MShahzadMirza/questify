@@ -1,504 +1,504 @@
 /* 🌸 QUESTIFY - Cozy Summer Theme 🌸 */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+  font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
 
-    background: linear-gradient(180deg, #fff7e8, #ffeef5);
+  background: linear-gradient(180deg, #fff7e8, #ffeef5);
 
-    color: #5b4636;
+  color: #5b4636;
 
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 /* Main App */
 
 .app {
-    width: 90%;
-    max-width: 900px;
+  width: 90%;
+  max-width: 900px;
 
-    margin: auto;
+  margin: auto;
 
-    padding: 25px;
+  padding: 25px;
 }
 
 /* Header */
 
 header {
-    text-align: center;
+  text-align: center;
 
-    padding: 25px;
+  padding: 25px;
 }
 
 header h1 {
-    font-size: 45px;
+  font-size: 45px;
 
-    color: #ff8fab;
+  color: #ff8fab;
 
-    text-shadow: 2px 2px #ffd6e0;
+  text-shadow: 2px 2px #ffd6e0;
 }
 
 header p {
-    font-size: 18px;
+  font-size: 18px;
 
-    color: #8a6d5d;
+  color: #8a6d5d;
 }
 
 /* Cards */
 
 .card {
-    background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.8);
 
-    border-radius: 25px;
+  border-radius: 25px;
 
-    padding: 25px;
+  padding: 25px;
 
-    margin: 20px 0;
+  margin: 20px 0;
 
-    box-shadow: 0 10px 25px rgba(180, 120, 100, 0.15);
+  box-shadow: 0 10px 25px rgba(180, 120, 100, 0.15);
 
-    backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 /* Stats */
 
 .stats {
-    display: flex;
+  display: flex;
 
-    justify-content: space-around;
+  justify-content: space-around;
 
-    text-align: center;
+  text-align: center;
 
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .stats span {
-    display: block;
+  display: block;
 
-    font-size: 25px;
+  font-size: 25px;
 
-    color: #ff8fab;
+  color: #ff8fab;
 
-    font-weight: bold;
+  font-weight: bold;
 }
 
 /* Qi Section */
 
 .qi {
-    text-align: center;
+  text-align: center;
 }
 
 .fox {
-    font-size: 90px;
+  font-size: 90px;
 
-    animation: float 3s infinite ease-in-out;
+  animation: float 3s infinite ease-in-out;
 }
 
 @keyframes float {
-    0% {
-        transform: translateY(0);
-    }
+  0% {
+    transform: translateY(0);
+  }
 
-    50% {
-        transform: translateY(-12px);
-    }
+  50% {
+    transform: translateY(-12px);
+  }
 
-    100% {
-        transform: translateY(0);
-    }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .speech {
-    background: #fff0f5;
+  background: #fff0f5;
 
-    padding: 20px;
+  padding: 20px;
 
-    border-radius: 20px;
+  border-radius: 20px;
 
-    margin: 15px;
+  margin: 15px;
 
-    font-size: 18px;
+  font-size: 18px;
 }
 
 /* Progress Bars */
 
 .bar {
-    width: 100%;
+  width: 100%;
 
-    height: 20px;
+  height: 20px;
 
-    background: #eee;
+  background: #eee;
 
-    border-radius: 20px;
+  border-radius: 20px;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .xp {
-    height: 100%;
+  height: 100%;
 
-    width: 0%;
+  width: 0%;
 
-    background: linear-gradient(90deg, #ffd166, #ff9f1c);
+  background: linear-gradient(90deg, #ffd166, #ff9f1c);
 
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 .happiness {
-    height: 100%;
+  height: 100%;
 
-    width: 80%;
+  width: 80%;
 
-    background: linear-gradient(90deg, #ffb6c1, #ff8fab);
+  background: linear-gradient(90deg, #ffb6c1, #ff8fab);
 }
 
 /* Subjects */
 
 .subject {
-    background: #fef6e4;
+  background: #fef6e4;
 
-    padding: 15px;
+  padding: 15px;
 
-    border-radius: 20px;
+  border-radius: 20px;
 
-    margin: 15px 0;
+  margin: 15px 0;
 }
 
 .progress {
-    width: 70%;
+  width: 70%;
 
-    height: 100%;
+  height: 100%;
 
-    background: #a7d7c5;
+  background: #a7d7c5;
 }
 
 button {
-    border: none;
+  border: none;
 
-    background: #ffb6c1;
+  background: #ffb6c1;
 
-    color: white;
+  color: white;
 
-    padding: 15px 25px;
+  padding: 15px 25px;
 
-    border-radius: 30px;
+  border-radius: 30px;
 
-    font-size: 17px;
+  font-size: 17px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 button:hover {
-    background: #ff8fab;
+  background: #ff8fab;
 
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 /* Quests */
 
 .quest {
-    background: #f8edeb;
+  background: #f8edeb;
 
-    padding: 15px;
+  padding: 15px;
 
-    margin: 10px 0;
+  margin: 10px 0;
 
-    border-radius: 18px;
+  border-radius: 18px;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .quest:hover {
-    background: #ffe5ec;
+  background: #ffe5ec;
 }
 
 /* Achievements */
 
 .badges {
-    display: flex;
+  display: flex;
 
-    gap: 15px;
+  gap: 15px;
 
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .badges {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 /* Cottage */
 
 .cottage {
-    font-size: 50px;
+  font-size: 50px;
 
-    text-align: center;
+  text-align: center;
 
-    padding: 30px;
+  padding: 30px;
 
-    background: linear-gradient(180deg, #bde0fe, #caffbf);
+  background: linear-gradient(180deg, #bde0fe, #caffbf);
 
-    border-radius: 25px;
+  border-radius: 25px;
 }
 
 /* Profile */
 
 .profile p {
-    font-size: 18px;
+  font-size: 18px;
 
-    margin: 15px 0;
+  margin: 15px 0;
 }
 
 .profile span {
-    color: #ff8fab;
+  color: #ff8fab;
 
-    font-weight: bold;
+  font-weight: bold;
 }
 
 /* Mobile */
 
 @media (max-width: 600px) {
-    .stats {
-        flex-direction: column;
+  .stats {
+    flex-direction: column;
 
-        gap: 20px;
-    }
+    gap: 20px;
+  }
 
-    header h1 {
-        font-size: 35px;
-    }
+  header h1 {
+    font-size: 35px;
+  }
 }
 
 .friendBar {
-    height: 100%;
+  height: 100%;
 
-    width: 0%;
+  width: 0%;
 
-    background: linear-gradient(90deg, #ffd166, #ff9f1c);
+  background: linear-gradient(90deg, #ffd166, #ff9f1c);
 
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 /* 🌸 Cozy Popup */
 
 .popupOverlay {
-    position: fixed;
+  position: fixed;
 
-    top: 0;
+  top: 0;
 
-    left: 0;
+  left: 0;
 
-    width: 100%;
+  width: 100%;
 
-    height: 100%;
+  height: 100%;
 
-    background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.35);
 
-    display: none;
+  display: none;
 
-    justify-content: center;
+  justify-content: center;
 
-    align-items: center;
+  align-items: center;
 
-    z-index: 1000;
+  z-index: 1000;
 }
 
 .popupCard {
-    background: #fffaf5;
+  background: #fffaf5;
 
-    width: 90%;
+  width: 90%;
 
-    max-width: 420px;
+  max-width: 420px;
 
-    padding: 30px;
+  padding: 30px;
 
-    border-radius: 25px;
+  border-radius: 25px;
 
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 
-    text-align: center;
+  text-align: center;
 
-    animation: popupAppear 0.25s ease;
+  animation: popupAppear 0.25s ease;
 }
 
 .popupCard h2 {
-    color: #ff8fab;
+  color: #ff8fab;
 
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .popupCard input {
-    width: 100%;
+  width: 100%;
 
-    padding: 15px;
+  padding: 15px;
 
-    border: 2px solid #ffd6e0;
+  border: 2px solid #ffd6e0;
 
-    border-radius: 18px;
+  border-radius: 18px;
 
-    font-size: 17px;
+  font-size: 17px;
 
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 
-    outline: none;
+  outline: none;
 }
 
 .popupCard input:focus {
-    border-color: #ff8fab;
+  border-color: #ff8fab;
 }
 
 .popupButtons {
-    display: flex;
+  display: flex;
 
-    gap: 15px;
+  gap: 15px;
 
-    justify-content: center;
+  justify-content: center;
 }
 
 .popupButtons button {
-    flex: 1;
+  flex: 1;
 }
 
 @keyframes popupAppear {
-    from {
-        transform: scale(0.85);
+  from {
+    transform: scale(0.85);
 
-        opacity: 0;
-    }
+    opacity: 0;
+  }
 
-    to {
-        transform: scale(1);
+  to {
+    transform: scale(1);
 
-        opacity: 1;
-    }
+    opacity: 1;
+  }
 }
 
 /* Companion Cards */
 
 .companionCard {
-    background: #fff8f2;
+  background: #fff8f2;
 
-    border-radius: 20px;
+  border-radius: 20px;
 
-    padding: 18px;
+  padding: 18px;
 
-    margin: 15px 0;
+  margin: 15px 0;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    transition: 0.3s;
+  transition: 0.3s;
 
-    border: 3px solid transparent;
+  border: 3px solid transparent;
 }
 
 .companionCard:hover {
-    transform: scale(1.02);
+  transform: scale(1.02);
 
-    background: #fff0f5;
+  background: #fff0f5;
 }
 
 .companionCard.selected {
-    border-color: #ff8fab;
+  border-color: #ff8fab;
 }
 
 .companionCard h3 {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .companionCard p {
-    color: #7d6758;
+  color: #7d6758;
 }
 
 /* 🌸 App Layout */
 
 .layout {
-    display: flex;
+  display: flex;
 
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 /* Sidebar */
 
 .sidebar {
-    width: 250px;
+  width: 250px;
 
-    background: #fff8f2;
+  background: #fff8f2;
 
-    padding: 25px;
+  padding: 25px;
 
-    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.08);
 
-    position: sticky;
+  position: sticky;
 
-    top: 0;
+  top: 0;
 
-    height: 100vh;
+  height: 100vh;
 }
 
 .sidebar h2 {
-    text-align: center;
+  text-align: center;
 
-    color: #ff8fab;
+  color: #ff8fab;
 
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .sidebarSubtitle {
-    text-align: center;
+  text-align: center;
 
-    color: #8a6d5d;
+  color: #8a6d5d;
 
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 
-    font-size: 14px;
+  font-size: 14px;
 }
 
 /* Navigation Buttons */
 
 .navButton {
-    width: 100%;
+  width: 100%;
 
-    margin-bottom: 12px;
+  margin-bottom: 12px;
 
-    text-align: left;
+  text-align: left;
 }
 
 /* Main Content */
 
 .app {
-    flex: 1;
+  flex: 1;
 
-    padding: 30px;
+  padding: 30px;
 }
 
 /* Mobile */
 
 @media (max-width: 768px) {
-    .layout {
-        flex-direction: column;
-    }
+  .layout {
+    flex-direction: column;
+  }
 
-    .sidebar {
-        width: 100%;
+  .sidebar {
+    width: 100%;
 
-        height: auto;
+    height: auto;
 
-        position: relative;
-    }
+    position: relative;
+  }
 }
 
 /* ===========================
@@ -508,119 +508,119 @@ button:hover {
 /* Layout */
 
 .layout {
-    display: flex;
+  display: flex;
 }
 
 /* Flower Button */
 
 .menuButton {
-    position: fixed;
+  position: fixed;
 
-    top: 20px;
+  top: 20px;
 
-    left: 20px;
+  left: 20px;
 
-    width: 60px;
+  width: 60px;
 
-    height: 60px;
+  height: 60px;
 
-    display: flex;
+  display: flex;
 
-    justify-content: center;
+  justify-content: center;
 
-    align-items: center;
+  align-items: center;
 
-    padding: 0;
+  padding: 0;
 
-    border: none;
+  border: none;
 
-    border-radius: 50%;
+  border-radius: 50%;
 
-    background: #ffb6c1;
+  background: #ffb6c1;
 
-    color: white;
+  color: white;
 
-    font-size: 28px;
+  font-size: 28px;
 
-    line-height: 1;
+  line-height: 1;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 
-    z-index: 1001;
+  z-index: 1001;
 
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 .menuButton:hover {
-    background: #ff8fab;
+  background: #ff8fab;
 
-    transform: scale(1.08) rotate(15deg);
+  transform: scale(1.08) rotate(15deg);
 }
 
 /* Sidebar */
 
 .sidebar {
-    position: fixed;
+  position: fixed;
 
-    left: -320px;
+  left: -320px;
 
-    top: 0;
+  top: 0;
 
-    width: 300px;
+  width: 300px;
 
-    height: 100vh;
+  height: 100vh;
 
-    background: #fffaf5;
+  background: #fffaf5;
 
-    padding: 30px;
+  padding: 30px;
 
-    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.15);
 
-    transition: 0.35s;
+  transition: 0.35s;
 
-    z-index: 1000;
+  z-index: 1000;
 }
 
 .sidebar.open {
-    left: 0;
+  left: 0;
 }
 
 .sidebar h2 {
-    color: #ff8fab;
+  color: #ff8fab;
 
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .sidebarSubtitle {
-    color: #8a6d5d;
+  color: #8a6d5d;
 
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 /* Navigation Buttons */
 
 .navButton {
-    width: 100%;
+  width: 100%;
 
-    margin-bottom: 12px;
+  margin-bottom: 12px;
 
-    text-align: left;
+  text-align: left;
 }
 
 /* Qi Message */
 
 .sidebarQi {
-    margin-top: 35px;
+  margin-top: 35px;
 
-    padding: 15px;
+  padding: 15px;
 
-    border-radius: 15px;
+  border-radius: 15px;
 
-    background: #fff0f5;
+  background: #fff0f5;
 
-    line-height: 1.5;
+  line-height: 1.5;
 }
 
 /* ===========================
@@ -628,318 +628,289 @@ button:hover {
 =========================== */
 
 #companionCards {
-    display: grid;
+  display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 
-    gap: 20px;
+  gap: 20px;
 
-    margin-top: 25px;
+  margin-top: 25px;
 }
 
 .companionCard {
-    background: #fff7f9;
+  background: #fff7f9;
 
-    border-radius: 20px;
+  border-radius: 20px;
 
-    padding: 20px;
+  padding: 20px;
 
-    text-align: center;
+  text-align: center;
 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 .companionCard:hover {
-    transform: translateY(-8px);
+  transform: translateY(-8px);
 }
 
 .companionEmoji {
-    font-size: 70px;
+  font-size: 70px;
 
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .chooseCompanion {
-    margin-top: 15px;
+  margin-top: 15px;
 
-    width: 100%;
+  width: 100%;
 }
 
-
 .welcomeCard {
-    background: linear-gradient(135deg, #ffe7f3, #fff8dc);
-    border-radius: 25px;
-    padding: 25px;
-    margin-bottom: 20px;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #ffe7f3, #fff8dc);
+  border-radius: 25px;
+  padding: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .welcomeCard h1 {
-    margin: 0;
-    font-size: 2.2rem;
+  margin: 0;
+  font-size: 2.2rem;
 }
 
 .welcomeCard h2 {
-    margin-top: 10px;
-    color: #8b5a8c;
+  margin-top: 10px;
+  color: #8b5a8c;
 }
 
 .welcomeCard p {
-    color: #666;
+  color: #666;
 }
 
 .statsGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 20px 0;
 }
 
 .statCard {
-    background: #fff;
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
-    transition: .25s;
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: 0.25s;
 }
 
 .statCard:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .statEmoji {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .statCard h3 {
-    margin: 10px 0;
-    font-size: 1rem;
-    color: #777;
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #777;
 }
 
 .statCard span {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #ff7aa8;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #ff7aa8;
 }
 
 .adventureCard {
+  background: #fff;
 
-    background: #fff;
+  border-radius: 25px;
 
-    border-radius: 25px;
+  padding: 20px;
 
-    padding: 20px;
+  margin: 20px 0;
 
-    margin: 20px 0;
-
-    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
-
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .adventureCard h2 {
+  margin-bottom: 20px;
 
-    margin-bottom: 20px;
-
-    color: #ff7aa8;
-
+  color: #ff7aa8;
 }
 
 .adventureItem {
+  padding: 12px 0;
 
-    padding: 12px 0;
+  border-bottom: 1px solid #f2f2f2;
 
-    border-bottom: 1px solid #f2f2f2;
-
-    font-size: 18px;
-
+  font-size: 18px;
 }
 
 .adventureItem:last-child {
-
-    border-bottom: none;
-
+  border-bottom: none;
 }
 
 .card {
-    transition: transform .25s ease, box-shadow .25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
 
-    box-shadow: 0 15px 30px rgba(0, 0, 0, .12);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
 .subjectCard {
+  background: white;
 
-    background: white;
+  border-radius: 22px;
 
-    border-radius: 22px;
+  padding: 20px;
 
-    padding: 20px;
+  margin: 20px 0;
 
-    margin: 20px 0;
+  cursor: pointer;
 
-    cursor: pointer;
+  transition: 0.25s;
 
-    transition: .25s;
-
-    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
-
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .subjectCard:hover {
-
-    transform: translateY(-5px);
-
+  transform: translateY(-5px);
 }
 
 .subjectTop {
+  display: flex;
 
-    display: flex;
+  gap: 20px;
 
-    gap: 20px;
+  align-items: center;
 
-    align-items: center;
-
-    margin-bottom: 15px;
-
+  margin-bottom: 15px;
 }
 
 .subjectEmoji {
-
-    font-size: 3rem;
-
+  font-size: 3rem;
 }
 
 .subjectTop h3 {
-
-    margin: 0;
-
+  margin: 0;
 }
 
 .progressText {
+  text-align: right;
 
-    text-align: right;
+  color: #888;
 
-    color: #888;
-
-    margin-top: 10px;
-
+  margin-top: 10px;
 }
 
 /* 🌸 Profile */
 
 .profileAvatar {
-    font-size: 80px;
-    text-align: center;
-    margin-bottom: 20px;
+  font-size: 80px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .profileInfo {
-    background: white;
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 20px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .profileInfo p {
-    color: #777;
-    margin-bottom: 5px;
+  color: #777;
+  margin-bottom: 5px;
 }
 
 .profileInfo h3 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: #ff6fa5;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #ff6fa5;
 }
 
 /* 🌱 Garden */
 
-.gardenHeader{
-    text-align:center;
-    margin-bottom:25px;
+.gardenHeader {
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-.gardenHeader p{
-    color:#777;
+.gardenHeader p {
+  color: #777;
 }
 
-.gardenStats{
-    display:flex;
-    gap:15px;
-    margin-bottom:20px;
+.gardenStats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
-.gardenStat{
-    flex:1;
-    background:white;
-    border-radius:18px;
-    padding:18px;
-    text-align:center;
+.gardenStat {
+  flex: 1;
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
 }
 
-.gardenStat h3{
-    font-size:28px;
-    margin:8px 0;
-    color:#7cc576;
+.gardenStat h3 {
+  font-size: 28px;
+  margin: 8px 0;
+  color: #7cc576;
 }
 
 /* 🌱 Subject Cards */
 
-.subjectCard{
+.subjectCard {
+  background: white;
 
-    background:white;
+  border-radius: 22px;
 
-    border-radius:22px;
+  padding: 20px;
 
-    padding:20px;
+  margin-bottom: 18px;
 
-    margin-bottom:18px;
+  cursor: pointer;
 
-    cursor:pointer;
+  transition: 0.3s;
 
-    transition:.3s;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-.subjectCard:hover{
-
-    transform:translateY(-5px);
-
+.subjectCard:hover {
+  transform: translateY(-5px);
 }
 
-.subjectTop{
+.subjectTop {
+  display: flex;
 
-    display:flex;
+  justify-content: space-between;
 
-    justify-content:space-between;
+  align-items: center;
 
-    align-items:center;
-
-    margin-bottom:15px;
-
+  margin-bottom: 15px;
 }
 
-.subjectTop h3{
-
-    margin:0;
-
+.subjectTop h3 {
+  margin: 0;
 }
 
-.plantStage{
+.plantStage {
+  text-align: center;
 
-    text-align:center;
+  font-size: 22px;
 
-    font-size:22px;
-
-    margin-top:15px;
-
+  margin-top: 15px;
 }
