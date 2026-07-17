@@ -774,60 +774,118 @@ button:hover {
 
     box-shadow: 0 15px 30px rgba(0, 0, 0, .12);
 }
-.subjectCard{
 
-    background:white;
+.subjectCard {
 
-    border-radius:22px;
+    background: white;
 
-    padding:20px;
+    border-radius: 22px;
 
-    margin:20px 0;
+    padding: 20px;
 
-    cursor:pointer;
+    margin: 20px 0;
 
-    transition:.25s;
+    cursor: pointer;
 
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition: .25s;
 
-}
-
-.subjectCard:hover{
-
-    transform:translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
 
 }
 
-.subjectTop{
+.subjectCard:hover {
 
+    transform: translateY(-5px);
+
+}
+
+.subjectTop {
+
+    display: flex;
+
+    gap: 20px;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+
+}
+
+.subjectEmoji {
+
+    font-size: 3rem;
+
+}
+
+.subjectTop h3 {
+
+    margin: 0;
+
+}
+
+.progressText {
+
+    text-align: right;
+
+    color: #888;
+
+    margin-top: 10px;
+
+}
+
+/* 🌸 Profile */
+
+.profileAvatar {
+    font-size: 80px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profileInfo {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.profileInfo p {
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.profileInfo h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #ff6fa5;
+}
+
+/* 🌱 Garden */
+
+.gardenHeader{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.gardenHeader p{
+    color:#777;
+}
+
+.gardenStats{
     display:flex;
-
-    gap:20px;
-
-    align-items:center;
-
-    margin-bottom:15px;
-
+    gap:15px;
+    margin-bottom:20px;
 }
 
-.subjectEmoji{
-
-    font-size:3rem;
-
+.gardenStat{
+    flex:1;
+    background:white;
+    border-radius:18px;
+    padding:18px;
+    text-align:center;
 }
 
-.subjectTop h3{
-
-    margin:0;
-
-}
-
-.progressText{
-
-    text-align:right;
-
-    color:#888;
-
-    margin-top:10px;
-
+.gardenStat h3{
+    font-size:28px;
+    margin:8px 0;
+    color:#7cc576;
 }

@@ -178,34 +178,61 @@
                 <!-- Profile -->
 
                 <section class="card profile page" id="profilePage" style="display:none">
+
                     <h2>👤 My Cozy Profile</h2>
 
-                    <p>
-                        👤 Name:
-                        <span id="playerName">Student</span>
-                    </p>
+                    <div class="profileAvatar">
+                        🌸
+                    </div>
 
-                    <p>
-                        🎓 Grade:
-                        <span id="playerGrade">Not Set</span>
-                    </p>
+                    <div class="profileInfo">
 
-                    <p>
-                        🎯 Goal:
-                        <span id="playerGoal">Not Set</span>
-                    </p>
+                        <p>👤 <strong>Name</strong></p>
+                        <h3 id="playerName">Student</h3>
 
-                    <p>
-                        ☁️ Study Style:
-                        <span id="playerStyle">Not Set</span>
-                    </p>
+                        <p>🎓 <strong>Grade</strong></p>
+                        <h3 id="playerGrade">Not Set</h3>
 
-                    <button id="editProfile">✏️ Edit Profile</button>
+                        <p>🎯 <strong>Goal</strong></p>
+                        <h3 id="playerGoal">Not Set</h3>
+
+                        <p>☁️ <strong>Study Style</strong></p>
+                        <h3 id="playerStyle">Not Set</h3>
+
+                    </div>
+
+                    <button id="editProfile">
+                        ✏️ Edit Profile
+                    </button>
+
                 </section>
 
                 <!-- 🌱 Garden -->
                 <section class="card page" id="gardenPage" style="display:none">
-                    <h2>🌱 My Study Garden</h2>
+                    <header class="gardenHeader">
+
+                        <h2>🌱 My Study Garden</h2>
+
+                        <p>
+                            Every completed quest helps your knowledge bloom.
+                        </p>
+
+                    </header>
+                    <section class="gardenStats">
+
+                        <div class="gardenStat">
+                            🌱
+                            <h3 id="subjectCount">1</h3>
+                            <p>Subjects</p>
+                        </div>
+
+                        <div class="gardenStat">
+                            🌸
+                            <h3 id="gardenProgress">0%</h3>
+                            <p>Growth</p>
+                        </div>
+
+                    </section>
 
                     <div id="subjects"></div>
 
