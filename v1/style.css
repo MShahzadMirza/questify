@@ -116,3 +116,22 @@ body{
     }
 
 }
+.pageHeader{
+
+    margin-bottom:35px;
+
+}
+
+.pageHeader h1{
+
+    font-size:40px;
+
+    margin-bottom:8px;
+
+}
+
+.pageHeader p{
+
+    color:var(--text-light);
+
+}
