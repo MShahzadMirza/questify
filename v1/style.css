@@ -135,3 +135,16 @@ body{
     color:var(--text-light);
 
 }
+.card{
+
+    background:var(--bg-card);
+
+    border-radius:var(--radius);
+
+    padding:28px;
+
+    box-shadow:var(--shadow);
+
+    border:1px solid var(--border);
+
+}
