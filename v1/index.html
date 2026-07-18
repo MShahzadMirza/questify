@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>🌸 Questify</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ================================================= -->
+    <!-- Questify Desktop -->
+    <!-- ================================================= -->
+
+    <div class="app">
+
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+
+        </aside>
+
+
+        <!-- Main Area -->
+
+        <main class="main">
+
+            <!-- ========================================= -->
+            <!-- 🌸 HOME PAGE -->
+            <!-- ========================================= -->
+
+            <section id="homePage" class="page">
+
+                <!-- Welcome Card -->
+
+                <section>
+
+                    <header class="heroCard">
+
+                        <div class="heroText">
+
+                            <p class="greeting" id="greetingText">
+                                🌸 Good Evening
+                            </p>
+
+                            <h1>
+                                Welcome back,
+                                <span id="playerNameHero">Student</span>
+                            </h1>
+
+                            <p class="heroQuote">
+
+                                "Small steps create big adventures."
+
+                            </p>
+
+                            <button id="continueAdventure">
+
+                                🌱 Continue Adventure
+
+                            </button>
+
+                        </div>
+
+                        <div class="heroArt">
+
+                            <div class="heroCompanion">
+
+                                🦊
+
+                            </div>
+
+                            <div class="heroTree">
+
+                                🌳
+
+                            </div>
+
+                        </div>
+
+                    </header>
+                    <!-- =======================================
+                                🌿 Continue Journey
+            zy======================================= -->
+
+                    <section class="continueCard">
+
+                        <div class="continueLeft">
+
+                            <p class="sectionLabel">
+                                Continue Your Journey
+                            </p>
+
+                            <h2 id="continueSubject">
+
+                                🌱 Your adventure hasn't started yet
+
+                            </h2>
+
+                            <p id="continueDescription">
+
+                                Create your first subject and begin growing your knowledge garden.
+
+                            </p>
+
+                            <button id="continueButton">
+
+                                ➕ Create First Subject
+
+                            </button>
+
+                        </div>
+
+                        <div class="continueRight">
+
+                            <div class="continuePlant">
+
+                                🌱
+
+                            </div>
+
+                        </div>
+
+                    </section>
+                    <!-- =======================================
+                                ⭐ Today's Adventure
+                    ======================================= -->
+
+                    <section class="adventureSection">
+
+                        <div class="sectionTitle">
+
+                            <h2>⭐ Today's Adventure</h2>
+
+                            <p>
+                                Every quest you complete helps you and your companion grow.
+                            </p>
+
+                        </div>
+
+                        <div class="adventureGrid">
+
+                            <article class="adventureCard">
+
+                                <div class="adventureIcon">
+                                    📚
+                                </div>
+
+                                <h3>
+                                    Today's Quests
+                                </h3>
+
+                                <p class="adventureValue" id="todayQuestCount">
+                                    No quests yet
+                                </p>
+
+                                <p class="adventureDescription">
+                                    Create quests inside your subjects.
+                                </p>
+
+                            </article>
+
+                            <article class="adventureCard">
+
+                                <div class="adventureIcon">
+                                    🌱
+                                </div>
+
+                                <h3>
+                                    Study Gardens
+                                </h3>
+
+                                <p class="adventureValue" id="subjectCount">
+                                    No subjects
+                                </p>
+
+                                <p class="adventureDescription">
+                                    Every subject becomes its own little garden.
+                                </p>
+
+                            </article>
+
+                            <article class="adventureCard">
+
+                                <div class="adventureIcon">
+                                    ⭐
+                                </div>
+
+                                <h3>
+                                    Next Level
+                                </h3>
+
+                                <p class="adventureValue" id="xpRemaining">
+                                    100 XP Left
+                                </p>
+
+                                <p class="adventureDescription">
+                                    Keep studying to level up.
+                                </p>
+
+                            </article>
+
+                            <article class="adventureCard">
+
+                                <div class="adventureIcon">
+                                    🔥
+                                </div>
+
+                                <h3>
+                                    Study Streak
+                                </h3>
+
+                                <p class="adventureValue" id="streakDays">
+                                    Start Today
+                                </p>
+
+                                <p class="adventureDescription">
+                                    Study every day to build your streak.
+                                </p>
+
+                            </article>
+
+                        </div>
+
+                    </section>
+                    <div class="welcomeCompanion">
+
+                        <div class="qiCircle">
+
+                            🦊
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ========================================= -->
+                <!-- 🌸 TODAY'S ADVENTURE -->
+                <!-- ========================================= -->
+
+                <section class="adventureCard">
+
+                    <div class="cardHeader">
+
+                        <div>
+
+                            <h2>🌸 Today's Adventure</h2>
+
+                            <p>Your cozy journey starts here.</p>
+
+                        </div>
+
+                        <div class="dayBadge">
+
+                            Day 1
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="adventureGrid">
+
+                        <div class="adventureItem">
+
+                            <span class="adventureIcon">🎯</span>
+
+                            <div>
+
+                                <h3 id="todayQuestCount">0</h3>
+
+                                <p>Quests Ready</p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="adventureItem">
+
+                            <span class="adventureIcon">🌱</span>
+
+                            <div>
+
+                                <h3 id="subjectCount">0</h3>
+
+                                <p>Growing Subjects</p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="adventureItem">
+
+                            <span class="adventureIcon">⭐</span>
+
+                            <div>
+
+                                <h3 id="xpLeft">100</h3>
+
+                                <p>XP Until Level Up</p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="adventureItem">
+
+                            <span class="adventureIcon">🦊</span>
+
+                            <div>
+
+                                <h3 id="qiMood">Happy</h3>
+
+                                <p>Qi's Mood</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button id="continueAdventure">
+
+                        Continue Adventure →
+
+                    </button>
+
+                </section>
+                <!-- =======================================
+                             🦊 Companion
+                ======================================= -->
+
+                <section class="companionSection">
+
+                    <div class="sectionTitle">
+
+                        <h2>
+                            🦊 Your Companion
+                        </h2>
+
+                        <p>
+                            Your study partner is always here to encourage you.
+                        </p>
+
+                    </div>
+
+                    <div class="companionCard">
+
+                        <div class="companionAvatar">
+
+                            <div id="companionEmoji">
+                                🦊
+                            </div>
+
+                        </div>
+
+                        <div class="companionContent">
+
+                            <h2>
+
+                                <span id="companionName">
+
+                                    Qi
+
+                                </span>
+
+                            </h2>
+
+                            <p id="companionMessage">
+
+                                Welcome! Let's begin our cozy adventure together.
+
+                            </p>
+
+                            <div class="friendshipBox">
+
+                                <p>
+
+                                    Friendship Level
+
+                                    <span id="friendshipLevel">
+
+                                        1
+
+                                    </span>
+
+                                </p>
+
+                                <div class="friendshipBar">
+
+                                    <div id="friendshipFill"></div>
+
+                                </div>
+
+                            </div>
+
+                            <button id="visitCompanion">
+
+                                🏡 Visit Companion Room
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+                <!-- ========================================= -->
+                <!-- ⭐ ADVENTURE PROGRESS -->
+                <!-- ========================================= -->
+
+                <section class="progressCard">
+
+                    <div class="sectionTitle">
+
+                        <h2>⭐ Adventure Progress</h2>
+
+                        <p>Every study session helps your world grow.</p>
+
+                    </div>
+
+
+                    <!-- XP -->
+
+                    <div class="progressBlock">
+
+                        <div class="progressHeader">
+
+                            <span>⭐ Experience</span>
+
+                            <span id="xpText">0 / 100</span>
+
+                        </div>
+
+                        <div class="progressBar">
+
+                            <div class="progressFill xpFill" id="xpBar"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Friendship -->
+
+                    <div class="progressBlock">
+
+                        <div class="progressHeader">
+
+                            <span>❤️ Qi Friendship</span>
+
+                            <span id="friendshipText">0%</span>
+
+                        </div>
+
+                        <div class="progressBar">
+
+                            <div class="progressFill friendshipFill" id="friendBar"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Happiness -->
+
+                    <div class="progressBlock">
+
+                        <div class="progressHeader">
+
+                            <span>🌸 Happiness</span>
+
+                            <span id="happinessText">50%</span>
+
+                        </div>
+
+                        <div class="progressBar">
+
+                            <div class="progressFill happinessFill" id="happinessBar"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Garden -->
+
+                    <div class="progressBlock">
+
+                        <div class="progressHeader">
+
+                            <span>🌱 Garden Growth</span>
+
+                            <span id="gardenGrowth">0%</span>
+
+                        </div>
+
+                        <div class="progressBar">
+
+                            <div class="progressFill gardenFill"></div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ========================================= -->
+                <!-- 📖 RECENT ADVENTURES -->
+                <!-- ========================================= -->
+
+                <section class="journalCard">
+
+                    <div class="sectionTitle">
+
+                        <h2>📖 Recent Adventures</h2>
+
+                        <p>Your journey is written here.</p>
+
+                    </div>
+
+
+                    <div id="adventureLog">
+
+                        <div class="logItem">
+
+                            🌸 Welcome to Questify!
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- Profile -->
+
+            <section id="profileScreen" class="screen">
+
+            </section>
+
+
+            <!-- Companion -->
+
+            <section id="companionScreen" class="screen">
+
+            </section>
+
+
+            <!-- Garden -->
+
+            <section id="gardenScreen" class="screen">
+
+            </section>
+
+
+            <!-- Subject Room -->
+
+            <section id="roomScreen" class="screen">
+
+            </section>
+
+
+            <!-- Quests -->
+
+            <section id="questsScreen" class="screen">
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- Popup -->
+    <!-- ================================================= -->
+
+    <div id="popupOverlay">
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- Toast Notifications -->
+    <!-- ================================================= -->
+
+    <div id="toastContainer">
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
