@@ -148,3 +148,35 @@ body{
     border:1px solid var(--border);
 
 }
+.sectionTitle{
+
+    margin-bottom:22px;
+
+}
+
+.sectionTitle h2{
+
+    font-size:28px;
+
+    margin-bottom:8px;
+
+}
+
+.sectionTitle p{
+
+    color:var(--text-light);
+
+}
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    border-radius:18px;
+
+    transition:.25s;
+
+    font-size:16px;
+
+}
