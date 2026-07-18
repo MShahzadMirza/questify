@@ -84,3 +84,16 @@ body{
     overflow-y:auto;
 
 }
+.page{
+
+    display:none;
+
+    animation:fade .35s ease;
+
+}
+
+.page.active{
+
+    display:block;
+
+}
