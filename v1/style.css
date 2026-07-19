@@ -690,3 +690,177 @@ button:hover{
     line-height:1.7;
 
 }
+/* =====================================================
+   🦊 Companion
+===================================================== */
+
+.companionSection{
+
+    margin-top:45px;
+
+}
+
+.companionCard{
+
+    background:var(--bg-card);
+
+    border:1px solid var(--border);
+
+    border-radius:28px;
+
+    padding:35px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:40px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.companionAvatar{
+
+    width:170px;
+
+    height:170px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        145deg,
+        #FFF7EF,
+        #F7EEE7
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+}
+
+#companionEmoji{
+
+    font-size:90px;
+
+}
+
+.companionContent{
+
+    flex:1;
+
+}
+
+.companionContent h2{
+
+    font-size:42px;
+
+    margin-bottom:12px;
+
+}
+
+.companionContent p{
+
+    color:var(--text-light);
+
+    font-size:19px;
+
+    line-height:1.8;
+
+}
+
+.friendshipBox{
+
+    margin:28px 0;
+
+}
+
+.friendshipBox p{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+}
+
+.friendshipBar{
+
+    width:100%;
+
+    height:18px;
+
+    background:var(--green-light);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+#friendshipFill{
+
+    width:10%;
+
+    height:100%;
+
+    background:var(--green);
+
+    border-radius:20px;
+
+}
+
+#visitCompanion{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:16px 34px;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    box-shadow:0 8px 18px rgba(168,108,93,.18);
+
+    transition:.25s;
+
+}
+
+#visitCompanion:hover{
+
+    background:var(--primary-light);
+
+    transform:translateY(-2px);
+
+    box-shadow:0 14px 28px rgba(168,108,93,.28);
+
+}
+button{
+
+    border:none;
+
+    outline:none;
+
+}
+
+button:focus{
+
+    outline:none;
+
+}
