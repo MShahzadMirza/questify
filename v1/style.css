@@ -36,10 +36,8 @@
 
     /* Shadows */
 
-   --shadow:
-    0 10px 25px rgba(168,108,93,.12);
-
-    --radius:26px;
+   --shadow:0 12px 32px rgba(78,55,43,.07);
+    --radius:30px;
 
 }
 *{
@@ -66,13 +64,25 @@ body{
         "Segoe UI",
         sans-serif;
 
-    background:var(--bg-main);
+    background:
+        radial-gradient(
+            circle at top right,
+            #FFF8F2 0%,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at bottom left,
+            #F2F8EF 0%,
+            transparent 35%
+        ),
+        var(--bg-main);
 
     color:var(--text);
 
     overflow-x:hidden;
 
     line-height:1.5;
+
 }
 
 .layout{
@@ -161,11 +171,11 @@ body{
 
 }
 
-.sectionTitle h2{
+   .sectionTitle h2{
 
-    font-size:28px;
+    font-size:34px;
 
-    margin-bottom:8px;
+    margin-bottom:10px;
 
 }
 
@@ -247,7 +257,7 @@ button:hover{
 
 .main{
 
-    padding:40px;
+    padding:50px;
 
     overflow-y:auto;
 
@@ -637,7 +647,7 @@ button:hover{
 
 .adventureCard:hover{
 
-    transform:translateY(-6px);
+    transform:translateY(-8px) scale(1.02);
 
 }
 
@@ -1025,7 +1035,7 @@ button:focus{
 
 .journalCard:hover{
 
-    transform:translateY(-6px);
+    transform:translateY(-8px) scale(1.02);
 
 }
 
@@ -1073,7 +1083,7 @@ button:focus{
 
 .progressCard{
 
-    margin-top:45px;
+    margin-top:55px;
 
     background:var(--bg-card);
 
@@ -1207,5 +1217,714 @@ button:focus{
 .logItem:hover{
 
     transform:translateX(6px);
+
+}
+/* =====================================================
+   🌸 Popup
+===================================================== */
+
+.popupOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.popupOverlay.show{
+
+    display:flex;
+
+}
+
+.popup{
+
+    width:520px;
+
+    background:var(--bg-card);
+
+    border-radius:28px;
+
+    padding:28px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+
+    border:1px solid var(--border);
+
+}
+
+.popupHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.popupHeader h2{
+
+    font-size:28px;
+
+}
+
+.popupContent{
+
+    min-height:120px;
+
+}
+
+.popupFooter{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
+
+#closePopup{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f2f2f2;
+
+    cursor:pointer;
+
+}
+
+.secondaryButton{
+
+    padding:12px 24px;
+
+    background:#EFEAE5;
+
+    color:var(--text);
+
+}
+
+.primaryButton{
+
+    padding:12px 24px;
+
+    background:var(--primary);
+
+    color:white;
+
+}
+/* =====================================================
+   ⭐ Today's Adventure
+===================================================== */
+
+.adventureGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+    margin-top:25px;
+
+}
+
+.adventureCard{
+
+    background:var(--bg-card);
+
+    border-radius:24px;
+
+    padding:28px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    transition:.25s;
+
+}
+
+.adventureCard:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.adventureIcon{
+
+    font-size:38px;
+
+    margin-bottom:18px;
+
+}
+
+.adventureCard h3{
+
+    font-size:24px;
+
+    margin-bottom:10px;
+
+}
+
+.adventureValue{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+    margin-bottom:8px;
+
+}
+
+.adventureDescription{
+
+    color:var(--text-light);
+
+    line-height:1.6;
+
+}
+/* =====================================================
+   🦊 Companion Card
+===================================================== */
+
+.companionCard{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:40px;
+
+    background:var(--bg-card);
+
+    padding:35px;
+
+    border-radius:30px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    margin-top:25px;
+
+}
+
+.companionAvatar{
+
+    width:170px;
+
+    height:170px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #FFF8F1,
+        #F5E7DB
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+}
+
+#companionEmoji{
+
+    font-size:90px;
+
+}
+
+.companionContent{
+
+    flex:1;
+
+}
+
+.companionContent h2{
+
+    font-size:46px;
+
+    margin-bottom:15px;
+
+}
+
+.companionContent p{
+
+    color:var(--text-light);
+
+    line-height:1.7;
+
+}
+
+.friendshipBox{
+
+    margin-top:30px;
+
+}
+
+.friendshipBox p{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    margin-bottom:10px;
+
+}
+
+.friendshipBar{
+
+    height:18px;
+
+    background:var(--green-light);
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+#friendshipFill{
+
+    width:10%;
+
+    height:100%;
+
+    background:var(--green);
+
+    border-radius:999px;
+
+}
+
+#visitCompanion{
+
+    margin-top:28px;
+
+    padding:16px 32px;
+
+    background:var(--primary);
+
+    color:white;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    box-shadow:var(--shadow);
+
+    transition:.25s;
+
+}
+
+#visitCompanion:hover{
+
+    transform:translateY(-3px);
+
+    background:var(--primary-light);
+
+}
+/* =====================================================
+   ⭐ Experience Card
+===================================================== */
+
+.experienceCard{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:35px;
+
+    margin-top:25px;
+
+    padding:35px;
+
+    background:var(--bg-card);
+
+    border-radius:30px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+}
+
+.levelBadge{
+
+    width:140px;
+
+    height:140px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #F7E8C1,
+        #F3D58A
+    );
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+}
+
+.levelLabel{
+
+    font-size:16px;
+
+    color:var(--text-light);
+
+    margin-bottom:6px;
+
+}
+
+#playerLevel{
+
+    font-size:52px;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.experienceInfo{
+
+    flex:1;
+
+}
+
+.experienceTop{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:12px;
+
+    font-weight:700;
+
+}
+
+.experienceBar{
+
+    height:20px;
+
+    background:var(--green-light);
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+#experienceFill{
+
+    width:0%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        var(--green),
+        #79B673
+    );
+
+    border-radius:999px;
+
+    transition:.4s;
+
+}
+
+#xpHint{
+
+    margin-top:15px;
+
+    color:var(--text-light);
+
+    line-height:1.6;
+
+}
+/* =====================================================
+   📖 Adventure Journal
+===================================================== */
+
+.journalSection{
+
+    margin-top:55px;
+
+}
+
+.journalGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+    margin-top:25px;
+
+}
+
+.journalCard{
+
+    background:var(--bg-card);
+
+    border:1px solid var(--border);
+
+    border-radius:28px;
+
+    padding:28px;
+
+    box-shadow:var(--shadow);
+
+    transition:.25s;
+
+}
+
+.journalCard:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.journalIcon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    background:#FFF4E8;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:36px;
+
+    margin-bottom:20px;
+
+}
+
+.journalCard h3{
+
+    font-size:24px;
+
+    margin-bottom:10px;
+
+}
+
+.journalCard p{
+
+    color:var(--text-light);
+
+    line-height:1.7;
+
+}
+/* =====================================================
+   ⭐ Adventure Progress
+===================================================== */
+
+.progressCard{
+
+    margin-top:55px;
+
+    background:var(--bg-card);
+
+    border:1px solid var(--border);
+
+    border-radius:30px;
+
+    padding:35px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.progressBlock{
+
+    margin-top:28px;
+
+}
+
+.progressHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:12px;
+
+    font-weight:600;
+
+}
+
+.progressBar{
+
+    width:100%;
+
+    height:18px;
+
+    background:#ECE6E1;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.progressFill{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    transition:.4s;
+
+}
+
+.xpFill{
+
+    background:linear-gradient(
+        90deg,
+        #F3D58A,
+        #F7C95C
+    );
+
+}
+
+.friendshipFill{
+
+    background:linear-gradient(
+        90deg,
+        #E9B7B7,
+        #D98F8F
+    );
+
+}
+
+.happinessFill{
+
+    background:linear-gradient(
+        90deg,
+        #FFD9B3,
+        #FFC285
+    );
+
+}
+
+.gardenFill{
+
+    background:linear-gradient(
+        90deg,
+        #A8C7A0,
+        #7DB97A
+    );
+
+}
+/* =====================================================
+   📖 Recent Adventures
+===================================================== */
+
+.recentAdventureSection{
+
+    margin-top:55px;
+
+    background:var(--bg-card);
+
+    border:1px solid var(--border);
+
+    border-radius:30px;
+
+    padding:35px;
+
+    box-shadow:var(--shadow);
+
+}
+
+#adventureLog{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    margin-top:25px;
+
+}
+
+.logItem{
+
+    background:#FFF9F5;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:18px 22px;
+
+    transition:.25s;
+
+}
+
+.logItem:hover{
+
+    transform:translateX(8px);
 
 }
