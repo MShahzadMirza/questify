@@ -597,3 +597,96 @@ button:hover{
     font-size:100px;
 
 }
+/* =====================================================
+   ⭐ Today's Adventure
+===================================================== */
+
+.adventureSection{
+
+    margin-top:40px;
+
+}
+
+.adventureGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:24px;
+
+    margin-top:25px;
+
+}
+
+.adventureCard{
+
+    background:var(--bg-card);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+    transition:.25s;
+
+}
+
+.adventureCard:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.adventureIcon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    background:var(--green-light);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:34px;
+
+    margin-bottom:22px;
+
+}
+
+.adventureCard h3{
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+.adventureValue{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+    margin-bottom:12px;
+
+}
+
+.adventureDescription{
+
+    color:var(--text-light);
+
+    line-height:1.7;
+
+}
