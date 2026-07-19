@@ -36,7 +36,8 @@
 
     /* Shadows */
 
-    --shadow:0 12px 30px rgba(0,0,0,.08);
+   --shadow:
+    0 10px 25px rgba(168,108,93,.12);
 
     --radius:26px;
 
@@ -48,6 +49,8 @@
     padding:0;
 
     box-sizing:border-box;
+
+    font-family:inherit;
 
 }
 
@@ -67,7 +70,11 @@ body{
 
     color:var(--text);
 
+    overflow-x:hidden;
+
+    line-height:1.5;
 }
+
 .layout{
 
     display:flex;
@@ -75,7 +82,7 @@ body{
     min-height:100vh;
 
 }
-.mainContent{
+.app{
 
     flex:1;
 
@@ -178,5 +185,33 @@ button{
     transition:.25s;
 
     font-size:16px;
+
+    font-weight:600;
+
+}
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--primary-light);
+    border-radius:20px;
+}
+button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 18px rgba(168,108,93,.18);
 
 }
