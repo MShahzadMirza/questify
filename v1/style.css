@@ -252,3 +252,132 @@ button:hover{
     overflow-y:auto;
 
 }
+/* =====================================================
+   🌸 Sidebar
+===================================================== */
+
+.logoCard{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.logoCircle{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:42px;
+
+    margin:auto;
+
+    box-shadow:var(--shadow);
+
+}
+
+.logoCard h2{
+
+    margin-top:18px;
+
+    font-size:28px;
+
+}
+
+.logoCard p{
+
+    color:var(--text-light);
+
+    margin-top:6px;
+
+}
+
+.sidebarNav{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.navButton{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    padding:16px 20px;
+
+    border-radius:18px;
+
+    text-align:left;
+
+    font-size:18px;
+
+    color:var(--text);
+
+    transition:.25s;
+
+}
+
+.navButton:hover{
+
+    background:var(--green-light);
+
+    transform:translateX(6px);
+
+}
+
+.navButton.active{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.sidebarFooter{
+
+    margin-top:50px;
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+}
+
+.footerFox{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+.sidebarFooter p{
+
+    color:var(--text-light);
+
+    font-size:15px;
+
+}
