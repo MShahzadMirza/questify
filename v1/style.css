@@ -985,3 +985,84 @@ button:focus{
     line-height:1.7;
 
 }
+/* =====================================================
+   📖 Adventure Journal
+===================================================== */
+
+.journalSection{
+
+    margin-top:45px;
+
+}
+
+.journalGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:24px;
+
+    margin-top:25px;
+
+}
+
+.journalCard{
+
+    background:var(--bg-card);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:28px;
+
+    box-shadow:var(--shadow);
+
+    transition:.25s;
+
+}
+
+.journalCard:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.journalIcon{
+
+    width:68px;
+
+    height:68px;
+
+    border-radius:50%;
+
+    background:#FFF3E6;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:34px;
+
+    margin-bottom:20px;
+
+}
+
+.journalCard h3{
+
+    font-size:24px;
+
+    margin-bottom:12px;
+
+}
+
+.journalCard p{
+
+    color:var(--text-light);
+
+    line-height:1.7;
+
+}
