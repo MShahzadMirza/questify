@@ -215,3 +215,40 @@ button:hover{
     box-shadow:0 8px 18px rgba(168,108,93,.18);
 
 }
+/* =====================================================
+   🌸 Desktop Layout
+===================================================== */
+
+.mainContent{
+
+    display:grid;
+
+    grid-template-columns:280px 1fr;
+
+    min-height:100vh;
+
+}
+
+.sidebar{
+
+    background:var(--bg-sidebar);
+
+    border-right:1px solid var(--border);
+
+    padding:28px;
+
+    position:sticky;
+
+    top:0;
+
+    height:100vh;
+
+}
+
+.main{
+
+    padding:40px;
+
+    overflow-y:auto;
+
+}
